@@ -2,7 +2,7 @@ import pygame
 
 class Player:
     def __init__(self, x, y):
-        self.image = pygame.Surface((16, 16))
+        self.image = pygame.Surface((32, 32))
         self.image.fill((0, 0, 255))  # Color azul para el jugador
         self.rect = self.image.get_rect(topleft=(x, y))
         self.speed = 5

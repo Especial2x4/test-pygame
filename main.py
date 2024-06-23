@@ -38,7 +38,7 @@ def get_collision_objects(tmx_data):
 collision_objects = get_collision_objects(tmx_data)
 
 # Crear el jugador
-player = Player(100, 100)
+player = Player(100, 90)
 
 # Bucle principal
 running = True
