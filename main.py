@@ -3,6 +3,7 @@ import pytmx
 import sys
 
 from Player import *
+from PC import *
 
 # Inicializar Pygame
 pygame.init()
@@ -12,6 +13,8 @@ SCREEN_WIDTH = 800
 SCREEN_HEIGHT = 600
 screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
 pygame.display.set_caption("Nivel con Tiled y Colisiones")
+
+
 
 # Cargar el archivo TMX
 tmx_data = pytmx.load_pygame('src/nivel1/mapa1.tmx')
@@ -29,7 +32,7 @@ def draw_map(screen, tmx_data):
 def get_collision_objects(tmx_data):
     collision_objects = []
     for obj in tmx_data.objects:
-        if obj.name == "colision-pared":
+        if obj.name == "colision-pared" or obj.name == "colision-computer":
             rect = pygame.Rect(obj.x, obj.y, obj.width, obj.height)
             collision_objects.append(rect)
     return collision_objects
@@ -37,8 +40,15 @@ def get_collision_objects(tmx_data):
 # Obtener los objetos de colisión
 collision_objects = get_collision_objects(tmx_data)
 
-# Crear el jugador
+# Crear el jugador y PC
 player = Player(100, 90)
+pc = PC()
+
+# Grupo de sprites
+all_sprites = pygame.sprite.Group()
+all_sprites.add(player)
+
+print(all_sprites)
 
 # Bucle principal
 running = True
@@ -46,6 +56,16 @@ while running:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             running = False
+
+        if pc.active:
+            pc.handle_event(event)
+        else:
+            if event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_e:  # Interactuar con la PC al presionar la tecla "e"
+                    if player.rect.colliderect(pygame.Rect(200, 200, 32, 32)):
+                        pc.open()
+    
+    
 
     # Obtener las teclas presionadas
     keys = pygame.key.get_pressed()
@@ -58,6 +78,9 @@ while running:
         dy = -player.speed
     if keys[pygame.K_DOWN]:
         dy = player.speed
+
+    if not pc.active:
+        all_sprites.update(keys)
 
     # Mover al jugador
     player.move(dx, dy, collision_objects)
@@ -74,6 +97,13 @@ while running:
     # Dibujar los objetos de colisión (opcional, para depuración)
     #for rect in collision_objects:
         #pygame.draw.rect(screen, (255, 0, 0), rect, 2)
+
+    # Dibujar PC
+    if pc.active:
+        pc.draw(screen)
+    else:
+        # Dibujar la PC en el mapa (rectángulo representando la PC)
+        pygame.draw.rect(screen, (0, 255, 0), pygame.Rect(200, 200, 32, 32))
 
     # Actualizar la pantalla
     pygame.display.flip()

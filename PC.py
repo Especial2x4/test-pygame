@@ -1,7 +1,8 @@
 import pygame
 
-class PC:
+class PC(pygame.sprite.Sprite):
     def __init__(self):
+        super().__init__()
         self.font = pygame.font.Font(None, 36)
         self.active = False
 
