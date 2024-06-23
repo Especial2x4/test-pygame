@@ -32,9 +32,13 @@ def draw_map(screen, tmx_data):
 def get_collision_objects(tmx_data):
     collision_objects = []
     for obj in tmx_data.objects:
-        if obj.name == "colision-pared" or obj.name == "colision-computer":
+        if obj.name == "colision-pared":
             rect = pygame.Rect(obj.x, obj.y, obj.width, obj.height)
             collision_objects.append(rect)
+        if obj.name == "colision-computer-player":
+            rect = pygame.Rect(obj.x, obj.y, obj.width, obj.height)
+            collision_objects.append(rect)
+            #print("he colisionado con computer player")
     return collision_objects
 
 # Obtener los objetos de colisión

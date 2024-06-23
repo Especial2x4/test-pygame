@@ -204,14 +204,14 @@
     <property name="colision-pared" type="bool" value="false"/>
    </properties>
   </object>
-  <object id="25" name="colision-computer" x="144.063" y="126.838" width="32.3619" height="32.3619" visible="0">
+  <object id="25" name="colision-computer-player" x="144.063" y="126.838" width="32.3619" height="32.3619" visible="0">
    <properties>
-    <property name="colision-computer" type="bool" value="true"/>
+    <property name="colision-computer-player" type="bool" value="true"/>
    </properties>
   </object>
-  <object id="27" name="colision-computer" x="144.063" y="127.36" width="30.796" height="32.3619">
+  <object id="27" name="colision-computer-player" x="144.063" y="127.36" width="30.796" height="32.3619">
    <properties>
-    <property name="colision-computer" type="bool" value="true"/>
+    <property name="colision-computer-player" type="bool" value="true"/>
    </properties>
   </object>
  </objectgroup>
