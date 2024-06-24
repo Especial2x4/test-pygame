@@ -61,14 +61,26 @@ while running:
         if event.type == pygame.QUIT:
             running = False
 
+        """
         if pc.active:
             pc.handle_event(event)
         else:
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_e:  # Interactuar con la PC al presionar la tecla "e"
                     if player.rect.colliderect(pygame.Rect(200, 200, 32, 32)):
+                        print("he colisionado con la pc")
                         pc.open()
-    
+        """
+        if pc.active:
+            pc.handle_event(event)
+        else:
+            if player.rect.colliderect(pygame.Rect(144,126,36,36)):
+                print("he colisionado con la pc")
+                if event.type == pygame.KEYDOWN:
+                    if event.key == pygame.K_e:
+                        pc.open()
+                        pc.draw(screen)
+
     
 
     # Obtener las teclas presionadas
@@ -103,11 +115,18 @@ while running:
         #pygame.draw.rect(screen, (255, 0, 0), rect, 2)
 
     # Dibujar PC
+    
     if pc.active:
         pc.draw(screen)
     else:
         # Dibujar la PC en el mapa (rectángulo representando la PC)
-        pygame.draw.rect(screen, (0, 255, 0), pygame.Rect(200, 200, 32, 32))
+        #pygame.draw.rect(screen, [0, 0, 0], [144, 126, 36, 36], 1)
+        # Todo este código de abajo es para hacer transparente el Rect que está por encima de la PC del player
+        s = pygame.Surface([36,36])  
+        s.convert_alpha()               
+        s.fill((0,0,0,0))           
+        screen.blit(s,(0,0) , (144,126,36,36))    
+    
 
     # Actualizar la pantalla
     pygame.display.flip()

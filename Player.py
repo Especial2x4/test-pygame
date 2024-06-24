@@ -17,6 +17,7 @@ class Player(pygame.sprite.Sprite):
         for obj in collision_objects:
             if self.rect.colliderect(obj):
                 self.rect.x = original_rect.x  # Revertir movimiento horizontal
+                #print(obj)
                 break
 
         self.rect.y += dy
