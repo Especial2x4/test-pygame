@@ -39,6 +39,18 @@ def get_collision_objects(tmx_data):
             rect = pygame.Rect(obj.x, obj.y, obj.width, obj.height)
             collision_objects.append(rect)
             #print("he colisionado con computer player")
+        if obj.name == "colision-sala":
+            rect = pygame.Rect(obj.x, obj.y, obj.width, obj.height)
+            collision_objects.append(rect)
+            #print("voy a ir a la sala")
+        if obj.name == "colision-computer-server":
+            rect = pygame.Rect(obj.x, obj.y, obj.width, obj.height)
+            collision_objects.append(rect)
+            #print("voy a ir a la sala")
+        if obj.name == "colision-server":
+            rect = pygame.Rect(obj.x, obj.y, obj.width, obj.height)
+            collision_objects.append(rect)
+            #print("voy a ir a la sala")
     return collision_objects
 
 # Obtener los objetos de colisión
@@ -80,6 +92,14 @@ while running:
                     if event.key == pygame.K_e:
                         pc.open()
                         pc.draw(screen)
+
+        
+        # Si colisiona con la compuerta pasa a otro nivel
+
+        if player.rect.colliderect(pygame.Rect(370, 16, 61, 20)):
+                print("voy a la sala")
+            
+
 
     
 
@@ -125,7 +145,16 @@ while running:
         s = pygame.Surface([36,36])  
         s.convert_alpha()               
         s.fill((0,0,0,0))           
-        screen.blit(s,(0,0) , (144,126,36,36))    
+        screen.blit(s,(0,0) , (144,126,36,36))
+
+    # Dibujar la compuerta de la sala
+
+    pygame.draw.rect(screen, [0, 0, 0], [370, 16, 61, 20], 1)
+    #s = pygame.Surface([36,36])  
+    #s.convert_alpha()               
+    #s.fill((0,0,0,0))           
+    #screen.blit(s,(0,0) , (144,126,36,36))
+
     
 
     # Actualizar la pantalla

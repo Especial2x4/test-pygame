@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.10.2" orientation="orthogonal" renderorder="right-down" width="50" height="38" tilewidth="16" tileheight="16" infinite="0" nextlayerid="9" nextobjectid="28">
+<map version="1.10" tiledversion="1.10.2" orientation="orthogonal" renderorder="right-down" width="50" height="38" tilewidth="16" tileheight="16" infinite="0" nextlayerid="9" nextobjectid="31">
  <tileset firstgid="1" source="tileset_full.tsx"/>
  <tileset firstgid="401" source="ibm5150.tsx"/>
  <tileset firstgid="405" source="Animated-Monitors-Sheet-14Frames.tsx"/>
@@ -49,7 +49,7 @@
  <layer id="3" name="Capa de patrones 2" width="50" height="38">
   <data encoding="csv">
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,18,18,18,18,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,1,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,0,0,0,0,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2147483649,0,0,0,0,
 0,0,0,0,49,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2147483665,0,0,0,0,
 0,0,0,0,49,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2147483665,0,0,0,0,
@@ -212,6 +212,21 @@
   <object id="27" name="colision-computer-player" x="144.063" y="127.36" width="30.796" height="32.3619">
    <properties>
     <property name="colision-computer-player" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="28" name="colision-sala" x="369.552" y="15.659" width="61.07" height="16.1809">
+   <properties>
+    <property name="colision-sala" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="29" name="colision-computer-server" x="143.019" y="398.782" width="32.3619" height="31.318">
+   <properties>
+    <property name="colision-computer-server" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="30" name="colision-server" x="86.6464" y="379.991" width="50.6307" height="121.096">
+   <properties>
+    <property name="colision-server" type="bool" value="true"/>
    </properties>
   </object>
  </objectgroup>
