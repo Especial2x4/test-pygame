@@ -4,6 +4,7 @@ import sys
 
 from Player import *
 from PC import *
+from Compuerta import *
 
 # Inicializar Pygame
 pygame.init()
@@ -63,6 +64,10 @@ collision_objects = get_collision_objects(tmx_data)
 player = Player(100, 90)
 pc = PC()
 
+# Crear compuertas
+
+puerta_sala = Compuerta(369, 15)
+
 # Grupo de sprites
 all_sprites = pygame.sprite.Group()
 all_sprites.add(player)
@@ -97,14 +102,15 @@ while running:
                         pc.draw(screen)
 
         
-        # Si colisiona con la compuerta pasa a otro nivel
+        # Si colisiona con la compuerta de la sala pasa a la sala
 
-        if player.rect.colliderect(pygame.Rect(370, 16, 61, 20)) and tag_level != "sala":
+        if player.rect.colliderect(puerta_sala.rectangle) and tag_level != "sala":
                 print("voy a la sala")
                 tag_level = "sala"
+                puerta_sala.set_position(369 , 572)
                 tmx_data = pytmx.load_pygame('src/nivel2/mapa2.tmx')
-                #draw_map(screen, tmx_data)
                 collision_objects = get_collision_objects(tmx_data)
+                #print(puerta_sala.x, puerta_sala.y)
             
 
 
@@ -156,7 +162,10 @@ while running:
 
     # Dibujar la compuerta de la sala
 
-    pygame.draw.rect(screen, [0, 0, 0], [370, 16, 61, 20], 1)
+    #puerta_sala = Compuerta(screen, 61, 20)
+
+    pygame.draw.rect(screen, (0,255,0), puerta_sala.rectangle)
+    #pygame.draw.rect(screen, (0,255,0), [370, 16, puerta_sala.x, puerta_sala.y], 1)
     #s = pygame.Surface([36,36])  
     #s.convert_alpha()               
     #s.fill((0,0,0,0))           
