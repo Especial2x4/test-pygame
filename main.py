@@ -98,6 +98,9 @@ while running:
 
         if player.rect.colliderect(pygame.Rect(370, 16, 61, 20)):
                 print("voy a la sala")
+                tmx_data = pytmx.load_pygame('src/nivel2/mapa2.tmx')
+                #draw_map(screen, tmx_data)
+                collision_objects = get_collision_objects(tmx_data)
             
 
 
