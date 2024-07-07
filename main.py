@@ -108,6 +108,7 @@ while running:
                 print("voy a la sala")
                 tag_level = "sala"
                 puerta_sala.set_position(369 , 572)
+                player.set_position(380, 532)
                 tmx_data = pytmx.load_pygame('src/nivel2/mapa2.tmx')
                 collision_objects = get_collision_objects(tmx_data)
                 #print(puerta_sala.x, puerta_sala.y)
