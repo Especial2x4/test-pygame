@@ -91,10 +91,13 @@ while running:
                         print("he colisionado con la pc")
                         pc.open()
         """
+
+        # Si colisiona con la PC
+
         if pc.active:
             pc.handle_event(event)
         else:
-            if player.rect.colliderect(pygame.Rect(144,126,36,36)):
+            if player.rect.colliderect(pygame.Rect(144,126,36,36)) and tag_level == "sistemas":
                 print("he colisionado con la pc")
                 if event.type == pygame.KEYDOWN:
                     if event.key == pygame.K_e:
@@ -164,8 +167,9 @@ while running:
     # Dibujar la compuerta de la sala
 
     #puerta_sala = Compuerta(screen, 61, 20)
-
-    pygame.draw.rect(screen, (0,255,0), puerta_sala.rectangle)
+    if pc.active == False: # Se dibuja la compuerta de la sala solo si no se ha ingresado a la pc
+        pygame.draw.rect(screen, (0,255,0), puerta_sala.rectangle)
+    
     #pygame.draw.rect(screen, (0,255,0), [370, 16, puerta_sala.x, puerta_sala.y], 1)
     #s = pygame.Surface([36,36])  
     #s.convert_alpha()               
