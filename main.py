@@ -109,7 +109,7 @@ while running:
                         pc.draw(screen)
 
         
-        # Si colisiona con la compuerta de la sala pasa a la sala
+        # Si colisiona con la compuerta de la sala puede ir a la sala o volver a sistemas
 
         if player.rect.colliderect(puerta_sala.rectangle) and tag_level != "sala":
                 print("voy a la sala")
@@ -117,6 +117,15 @@ while running:
                 puerta_sala.set_position(369 , 572)
                 player.set_position(380, 532)
                 tmx_data = pytmx.load_pygame('src/nivel2/mapa2.tmx')
+                collision_objects = get_collision_objects(tmx_data)
+                #print(puerta_sala.x, puerta_sala.y)
+
+        if player.rect.colliderect(puerta_sala.rectangle) and tag_level == "sala":
+                print("vuelvo a sistemas")
+                tag_level = "sisitemas"
+                puerta_sala.set_position(369, 15)
+                player.set_position(380, 48)
+                tmx_data = pytmx.load_pygame('src/nivel1/mapa1.tmx')
                 collision_objects = get_collision_objects(tmx_data)
                 #print(puerta_sala.x, puerta_sala.y)
             
