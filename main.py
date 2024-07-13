@@ -98,6 +98,10 @@ while running:
 
         # Si colisiona con la PC
 
+        if player.rect.colliderect(pygame.Rect(144,126,36,36)) and tag_level == "sistemas":
+                print("he colisionado con la pc")
+
+        """
         if pc.active:
             pc.handle_event(event)
         else:
@@ -107,6 +111,7 @@ while running:
                     if event.key == pygame.K_e:
                         pc.open()
                         pc.draw(screen)
+        """              
 
         
         # Si colisiona con la compuerta de la sala puede ir a la sala o volver a sistemas
@@ -122,12 +127,12 @@ while running:
 
         if player.rect.colliderect(puerta_sala.rectangle) and tag_level == "sala":
                 print("vuelvo a sistemas")
-                tag_level = "sisitemas"
+                tag_level = "sistemas"
                 puerta_sala.set_position(369, 15)
                 player.set_position(380, 48)
                 tmx_data = pytmx.load_pygame('src/nivel1/mapa1.tmx')
                 collision_objects = get_collision_objects(tmx_data)
-                #print(puerta_sala.x, puerta_sala.y)
+                print(collision_objects)
             
 
 
@@ -166,16 +171,18 @@ while running:
 
     # Dibujar PC
     
-    if pc.active:
-        pc.draw(screen)
-    else:
+    if (pc.active and tag_level == "sistemas"):
+        #pc.draw(screen)
+        pass
+    
+    if (tag_level == "sistemas"):
         # Dibujar la PC en el mapa (rectángulo representando la PC)
-        #pygame.draw.rect(screen, [0, 0, 0], [144, 126, 36, 36], 1)
+        pygame.draw.rect(screen, [0, 0, 0], [144, 126, 36, 36], 1)
         # Todo este código de abajo es para hacer transparente el Rect que está por encima de la PC del player
-        s = pygame.Surface([36,36])  
-        s.convert_alpha()               
-        s.fill((0,0,0,0))           
-        screen.blit(s,(0,0) , (144,126,36,36))
+        #s = pygame.Surface([36,36])  
+        #s.convert_alpha()               
+        #s.fill((0,0,0,0))           
+        #screen.blit(s,(0,0) , (144,126,36,36))
 
     # Dibujar la compuerta de la sala
 
