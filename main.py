@@ -98,20 +98,20 @@ while running:
 
         # Si colisiona con la PC
 
-        if player.rect.colliderect(pygame.Rect(144,126,36,36)) and tag_level == "sistemas":
-                print("he colisionado con la pc")
+        
 
-        """
+      
         if pc.active:
             pc.handle_event(event)
         else:
-            if player.rect.colliderect(pygame.Rect(144,126,36,36)) and tag_level == "sistemas":
+            if player.rect.colliderect(pc.rectangle) and tag_level == "sistemas":
                 print("he colisionado con la pc")
+                print(pc.rectangle.x, pc.rectangle.y)
                 if event.type == pygame.KEYDOWN:
                     if event.key == pygame.K_e:
                         pc.open()
                         pc.draw(screen)
-        """              
+                     
 
         
         # Si colisiona con la compuerta de la sala puede ir a la sala o volver a sistemas
@@ -132,7 +132,7 @@ while running:
                 player.set_position(380, 48)
                 tmx_data = pytmx.load_pygame('src/nivel1/mapa1.tmx')
                 collision_objects = get_collision_objects(tmx_data)
-                print(collision_objects)
+                #print(collision_objects)
             
 
 
@@ -172,8 +172,8 @@ while running:
     # Dibujar PC
     
     if (pc.active and tag_level == "sistemas"):
-        #pc.draw(screen)
-        pass
+        pc.draw(screen)
+        
     
     if (tag_level == "sistemas"):
         # Dibujar la PC en el mapa (rectángulo representando la PC)
@@ -183,6 +183,7 @@ while running:
         #s.convert_alpha()               
         #s.fill((0,0,0,0))           
         #screen.blit(s,(0,0) , (144,126,36,36))
+        pass
 
     # Dibujar la compuerta de la sala
 

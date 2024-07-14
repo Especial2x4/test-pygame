@@ -4,6 +4,7 @@ class PC(pygame.sprite.Sprite):
     def __init__(self):
         super().__init__()
         self.font = pygame.font.Font(None, 36)
+        self.rectangle = pygame.Rect(144,128,36,36)
         self.active = False
 
     def open(self):
