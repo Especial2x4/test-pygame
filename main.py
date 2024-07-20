@@ -13,7 +13,7 @@ pygame.init()
 SCREEN_WIDTH = 800
 SCREEN_HEIGHT = 600
 screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
-pygame.display.set_caption("Nivel con Tiled y Colisiones")
+pygame.display.set_caption("Soportanto-IT")
 
 # Interruptor de nivel
 #tag_level = ["sistemas" , "sala" , "toilette", "comedor" , "exterior"]
@@ -71,6 +71,7 @@ pc = PC()
 # Crear compuertas
 
 puerta_sala = Compuerta(369, 15)
+puerta_comedor = Compuerta(369, 15)
 
 # Grupo de sprites
 all_sprites = pygame.sprite.Group()
@@ -116,7 +117,7 @@ while running:
         
         # Si colisiona con la compuerta de la sala puede ir a la sala o volver a sistemas
 
-        if player.rect.colliderect(puerta_sala.rectangle) and tag_level != "sala":
+        if player.rect.colliderect(puerta_sala.rectangle) and tag_level != "sala" and tag_level != "comedor":
                 print("voy a la sala")
                 tag_level = "sala"
                 puerta_sala.set_position(369 , 572)
@@ -131,6 +132,26 @@ while running:
                 puerta_sala.set_position(369, 15)
                 player.set_position(380, 48)
                 tmx_data = pytmx.load_pygame('src/nivel1/mapa1.tmx')
+                collision_objects = get_collision_objects(tmx_data)
+                #print(collision_objects)
+
+        # Si colisiona con la compuerta del comedor puede ir al comedor o volver a la sala
+
+        if player.rect.colliderect(puerta_comedor.rectangle) and tag_level != "comedor":
+                print("voy al comedor")
+                tag_level = "comedor"
+                puerta_comedor.set_position(369 , 572)
+                player.set_position(380, 532)
+                tmx_data = pytmx.load_pygame('src/nivel3/mapa3.tmx')
+                collision_objects = get_collision_objects(tmx_data)
+                #print(puerta_sala.x, puerta_sala.y)
+
+        if player.rect.colliderect(puerta_comedor.rectangle) and tag_level == "comedor":
+                print("vuelvo a la sala")
+                tag_level = "sala"
+                puerta_comedor.set_position(369, 15)
+                player.set_position(380, 48)
+                tmx_data = pytmx.load_pygame('src/nivel2/mapa2.tmx')
                 collision_objects = get_collision_objects(tmx_data)
                 #print(collision_objects)
             
@@ -190,6 +211,18 @@ while running:
     #puerta_sala = Compuerta(screen, 61, 20)
     if pc.active == False: # Se dibuja la compuerta de la sala solo si no se ha ingresado a la pc
         pygame.draw.rect(screen, (0,255,0), puerta_sala.rectangle)
+    
+    #pygame.draw.rect(screen, (0,255,0), [370, 16, puerta_sala.x, puerta_sala.y], 1)
+    #s = pygame.Surface([36,36])  
+    #s.convert_alpha()               
+    #s.fill((0,0,0,0))           
+    #screen.blit(s,(0,0) , (144,126,36,36))
+
+    # Dibujar la compuerta del comedor
+
+    #puerta_sala = Compuerta(screen, 61, 20)
+    if pc.active == False and tag_level != "sistemas": # Se dibuja la compuerta de la sala solo si no se ha ingresado a la pc
+        pygame.draw.rect(screen, (255,0,0), puerta_comedor.rectangle)
     
     #pygame.draw.rect(screen, (0,255,0), [370, 16, puerta_sala.x, puerta_sala.y], 1)
     #s = pygame.Surface([36,36])  
