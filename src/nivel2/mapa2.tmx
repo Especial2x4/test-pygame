@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.10.2" orientation="orthogonal" renderorder="right-down" width="50" height="38" tilewidth="16" tileheight="16" infinite="0" nextlayerid="5" nextobjectid="25">
+<map version="1.10" tiledversion="1.10.2" orientation="orthogonal" renderorder="right-down" width="50" height="38" tilewidth="16" tileheight="16" infinite="0" nextlayerid="5" nextobjectid="27">
  <tileset firstgid="1" source="pixel-cyberpunk-interior.tsx"/>
  <tileset firstgid="925" source="../nivel1/tileset_full.tsx"/>
  <tileset firstgid="1325" source="A4.tsx"/>
  <tileset firstgid="1581" source="A2.tsx"/>
  <tileset firstgid="1773" source="Inside_home_B.tsx"/>
+ <tileset firstgid="2029" source="printer.tsx"/>
  <layer id="1" name="suelo" width="50" height="38">
   <data encoding="csv">
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
@@ -94,8 +95,8 @@
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,2029,2030,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2029,2030,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,2031,2032,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2031,2032,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,2147485636,2147485635,0,0,0,0,0,2147485636,2147485635,0,0,0,0,0,0,0,0,0,0,0,1987,1988,0,0,0,0,0,0,1987,1988,0,0,0,0,0,0,0,0,0,0,
@@ -240,6 +241,16 @@
   <object id="24" name="colision-computer" x="592" y="112" width="46" height="47">
    <properties>
     <property name="colision-computer" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="25" name="colision-printer" x="95" y="45" width="33" height="34">
+   <properties>
+    <property name="colision-printer" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="26" name="colision-printer" x="639" y="47" width="33" height="31">
+   <properties>
+    <property name="colision-printer" type="bool" value="true"/>
    </properties>
   </object>
  </objectgroup>
