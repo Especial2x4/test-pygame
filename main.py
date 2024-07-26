@@ -63,6 +63,10 @@ def get_collision_objects(tmx_data):
             rect = pygame.Rect(obj.x, obj.y, obj.width, obj.height)
             collision_objects.append(rect)
             #print("voy a ir a la sala")
+        if obj.name == "colision-ap":
+            rect = pygame.Rect(obj.x, obj.y, obj.width, obj.height)
+            collision_objects.append(rect)
+            #print("voy a ir a la sala")
 
     return collision_objects
 
