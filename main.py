@@ -90,8 +90,14 @@ def get_collision_objects(tmx_data):
 # Obtener los objetos de colisión
 collision_objects = get_collision_objects(tmx_data)
 
+# Ruta de la hoja de sprites
+sprite_sheet_path = 'assets/sprite_sheet.png'
+
 # Crear el jugador y PC
-player = Player(100, 90)
+#player = Player(100, 90)
+# Crear el jugador
+player = Player(sprite_sheet_path, SCREEN_WIDTH, SCREEN_HEIGHT)
+all_sprites = pygame.sprite.Group(player)
 pc = PC()
 
 # Crear compuertas
@@ -100,8 +106,8 @@ puerta_sala = Compuerta(369, 15)
 puerta_comedor = Compuerta(369, 15)
 
 # Grupo de sprites
-all_sprites = pygame.sprite.Group()
-all_sprites.add(player)
+#all_sprites = pygame.sprite.Group()
+#all_sprites.add(player)
 
 print(all_sprites)
 
@@ -147,7 +153,7 @@ while running:
                 print("voy a la sala")
                 tag_level = "sala"
                 puerta_sala.set_position(369 , 572)
-                player.set_position(380, 532)
+                #player.set_position(380, 532)
                 tmx_data = pytmx.load_pygame('src/nivel2/mapa2.tmx')
                 collision_objects = get_collision_objects(tmx_data)
                 #print(puerta_sala.x, puerta_sala.y)
@@ -156,7 +162,7 @@ while running:
                 print("vuelvo a sistemas")
                 tag_level = "sistemas"
                 puerta_sala.set_position(369, 15)
-                player.set_position(380, 48)
+                #player.set_position(380, 48)
                 tmx_data = pytmx.load_pygame('src/nivel1/mapa1.tmx')
                 collision_objects = get_collision_objects(tmx_data)
                 #print(collision_objects)
@@ -167,7 +173,7 @@ while running:
                 print("voy al comedor")
                 tag_level = "comedor"
                 puerta_comedor.set_position(369 , 572)
-                player.set_position(380, 532)
+                #player.set_position(380, 532)
                 tmx_data = pytmx.load_pygame('src/nivel3/mapa3.tmx')
                 collision_objects = get_collision_objects(tmx_data)
                 #print(puerta_sala.x, puerta_sala.y)
@@ -176,7 +182,7 @@ while running:
                 print("vuelvo a la sala")
                 tag_level = "sala"
                 puerta_comedor.set_position(369, 15)
-                player.set_position(380, 48)
+                #player.set_position(380, 48)
                 tmx_data = pytmx.load_pygame('src/nivel2/mapa2.tmx')
                 collision_objects = get_collision_objects(tmx_data)
                 #print(collision_objects)
@@ -186,6 +192,7 @@ while running:
     
 
     # Obtener las teclas presionadas
+    """
     keys = pygame.key.get_pressed()
     dx = dy = 0
     if keys[pygame.K_LEFT]:
@@ -196,12 +203,16 @@ while running:
         dy = -player.speed
     if keys[pygame.K_DOWN]:
         dy = player.speed
+    """
 
     if not pc.active:
-        all_sprites.update(keys)
+        #all_sprites.update(keys)
+        all_sprites.update()
 
     # Mover al jugador
-    player.move(dx, dy, collision_objects)
+    #player.move(dx, dy, collision_objects)
+
+   
 
     # Limpiar la pantalla
     screen.fill((0, 0, 0))
@@ -210,7 +221,12 @@ while running:
     draw_map(screen, tmx_data)
 
     # Dibujar el jugador
-    player.draw(screen)
+    #player.draw(screen)
+
+     # Actualizar todos los sprites
+    all_sprites.update()
+
+    
 
     # Dibujar los objetos de colisión (opcional, para depuración)
     #for rect in collision_objects:
@@ -258,11 +274,14 @@ while running:
 
     
 
+    # Dibuja los sprites agregados al grupo
+    all_sprites.draw(screen)
+
     # Actualizar la pantalla
     pygame.display.flip()
 
     # Controlar la velocidad de cuadros por segundo
-    pygame.time.Clock().tick(60)
+    pygame.time.Clock().tick(50)
 
 # Salir del programa
 pygame.quit()
