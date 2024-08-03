@@ -106,3 +106,48 @@ class Player(pygame.sprite.Sprite):
             self.rect.top = 0
         if self.rect.bottom > 600:
             self.rect.bottom = 600
+
+
+    
+    def move(self, dx, dy, collision_objects):
+        # Guardar la posición original
+        original_rect = self.rect.copy()
+
+        # setear distancia de rebote
+        distancia_rebote = 10
+
+        # Intentar mover al jugador
+        self.rect.x += dx
+        for obj in collision_objects:
+            if self.rect.colliderect(obj) and self.direction == "left":
+                self.rect.x = original_rect.x + distancia_rebote # Revertir movimiento horizontal izquierda
+                #self.rect.left = 0
+                print(obj)
+                print(original_rect.x)
+                break
+            if self.rect.colliderect(obj) and self.direction == "right":
+                self.rect.x = original_rect.x - distancia_rebote # Revertir movimiento horizontal derecha
+                #self.rect.left = 0
+                print(obj)
+                print(original_rect.x)
+                break
+            if self.rect.colliderect(obj) and self.direction == "up":
+                self.rect.y = original_rect.y + distancia_rebote # Revertir movimiento vertical arriba
+                #self.rect.left = 0
+                print(obj)
+                print(original_rect.y)
+                break
+            if self.rect.colliderect(obj) and self.direction == "down":
+                self.rect.y = original_rect.y - distancia_rebote # Revertir movimiento vertical arriba
+                #self.rect.left = 0
+                print(obj)
+                print(original_rect.y)
+                break
+        """
+        self.rect.y += dy
+        for obj in collision_objects:
+            if self.rect.colliderect(obj):
+                self.rect.y = original_rect.y - 10  # Revertir movimiento vertical
+                print(obj)
+                break
+        """       

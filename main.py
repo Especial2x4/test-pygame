@@ -210,7 +210,7 @@ while running:
         all_sprites.update()
 
     # Mover al jugador
-    #player.move(dx, dy, collision_objects)
+    player.move(0, 0, collision_objects)
 
    
 
