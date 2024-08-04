@@ -150,4 +150,10 @@ class Player(pygame.sprite.Sprite):
                 self.rect.y = original_rect.y - 10  # Revertir movimiento vertical
                 print(obj)
                 break
-        """       
+        """  
+
+    def set_position(self, x, y):
+
+        self.x = x
+        self.y = y
+        self.rect = self.image.get_rect(topleft=(self.x, self.y))         
