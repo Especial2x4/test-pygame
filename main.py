@@ -5,6 +5,7 @@ import sys
 from Player import *
 from PC import *
 from Compuerta import *
+from NPC import *
 
 # Inicializar Pygame
 pygame.init()
@@ -99,6 +100,11 @@ sprite_sheet_path = 'assets/sprite_sheet.png'
 player = Player(sprite_sheet_path, SCREEN_WIDTH, SCREEN_HEIGHT)
 all_sprites = pygame.sprite.Group(player)
 pc = PC()
+
+# Instancia primer NPC
+npc1_zafiro = NPC(sprite_sheet_path, SCREEN_WIDTH, SCREEN_HEIGHT)
+frame_0 = npc1_zafiro.get_image(0, 32, 32) # recorta el frame que se necesita
+
 
 # Crear compuertas
 
@@ -246,6 +252,7 @@ while running:
         #s.convert_alpha()               
         #s.fill((0,0,0,0))           
         #screen.blit(s,(0,0) , (144,126,36,36))
+        screen.blit(frame_0, (250,250)) # pone el frame obtenido en la ventana
         pass
 
     # Dibujar la compuerta de la sala
