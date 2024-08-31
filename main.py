@@ -93,6 +93,25 @@ collision_objects = get_collision_objects(tmx_data)
 
 # Ruta de la hoja de sprites
 sprite_sheet_path = 'assets/sprite_sheet.png'
+# Ventas
+sprite_sheet_zafiro = "src/assets/generic.png" # Hoja de sprite que corresponde a la sra zafiro
+sprite_sheet_mel = "src/assets/generic.png" # Hoja de sprite que corresponde a mel
+sprite_sheet_john = "src/assets/generic.png" # Hoja de sprite que corresponde a john
+sprite_sheet_mariana = "src/assets/generic.png" # Hoja de sprite que corresponde a mariana
+sprite_sheet_nerea = "src/assets/generic.png" # Hoja de sprite que corresponde a nerea
+sprite_sheet_marcelo = "src/assets/generic.png" # Hoja de sprite que corresponde a marcelo
+sprite_sheet_nico = "src/assets/generic.png" # Hoja de sprite que corresponde a nico
+sprite_sheet_rothwailer = "src/assets/generic.png" # Hoja de sprite que corresponde a sra rothwailer
+# Producto ExtraTerrestre
+sprite_sheet_florencia1 = "src/assets/generic.png" # Hoja de sprite que corresponde a florencia uno
+sprite_sheet_florencia2 = "src/assets/generic.png" # Hoja de sprite que corresponde a florencia dos
+sprite_sheet_florencia3 = "src/assets/generic.png" # Hoja de sprite que corresponde a florencia tres
+sprite_sheet_daniel = "src/assets/generic.png" # Hoja de sprite que corresponde a daniel
+sprite_sheet_chuck = "src/assets/generic.png" # Hoja de sprite que corresponde a chuck
+sprite_sheet_jennifer = "src/assets/generic.png" # Hoja de sprite que corresponde a jennifer
+sprite_sheet_emilio = "src/assets/generic.png" # Hoja de sprite que corresponde a emilio
+sprite_sheet_camorre = "src/assets/generic.png" # Hoja de sprite que corresponde a camorre
+
 
 # Crear el jugador y PC
 #player = Player(100, 90)
@@ -102,8 +121,8 @@ all_sprites = pygame.sprite.Group(player)
 pc = PC()
 
 # Instancia primer NPC
-npc1_zafiro = NPC(sprite_sheet_path, SCREEN_WIDTH, SCREEN_HEIGHT)
-frame_0 = npc1_zafiro.get_image(0, 32, 32) # recorta el frame que se necesita
+npc1_zafiro = NPC(sprite_sheet_zafiro, SCREEN_WIDTH, SCREEN_HEIGHT)
+frame_zafiro = npc1_zafiro.get_image(0, 32, 32) # recorta el frame que se necesita
 
 
 # Crear compuertas
@@ -252,8 +271,11 @@ while running:
         #s.convert_alpha()               
         #s.fill((0,0,0,0))           
         #screen.blit(s,(0,0) , (144,126,36,36))
-        screen.blit(frame_0, (250,250)) # pone el frame obtenido en la ventana
+        
         pass
+
+    if (tag_level == "sala"):
+        screen.blit(frame_zafiro, (175,90)) # pone el frame obtenido en la ventana
 
     # Dibujar la compuerta de la sala
 

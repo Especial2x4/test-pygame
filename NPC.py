@@ -5,7 +5,8 @@ class NPC(pygame.sprite.Sprite):
     def __init__(self, sprite_sheet_path, screen_width, screen_height):
         super().__init__()
         # Cargar la hoja de sprites
-        self.sprite_sheet = pygame.image.load("src/assets/generic.png").convert_alpha()
+        #self.sprite_sheet = pygame.image.load("src/assets/generic.png").convert_alpha()
+        self.sprite_sheet = pygame.image.load(sprite_sheet_path).convert_alpha()
         self.image = self.sprite_sheet
         
         # Dimensiones de los sprites
