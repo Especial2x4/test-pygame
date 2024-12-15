@@ -94,8 +94,8 @@ collision_objects = get_collision_objects(tmx_data)
 # Ruta de la hoja de sprites
 sprite_sheet_path = 'assets/sprite_sheet.png'
 # Ventas
-sprite_sheet_zafiro = "src/assets/generic.png" # Hoja de sprite que corresponde a la sra zafiro
-sprite_sheet_mel = "src/assets/generic.png" # Hoja de sprite que corresponde a mel
+sprite_sheet_zafiro = "src/assets/zafiro.png" # Hoja de sprite que corresponde a la sra zafiro
+sprite_sheet_mel = "src/assets/mel.png" # Hoja de sprite que corresponde a mel
 sprite_sheet_john = "src/assets/generic.png" # Hoja de sprite que corresponde a john
 sprite_sheet_mariana = "src/assets/generic.png" # Hoja de sprite que corresponde a mariana
 sprite_sheet_nerea = "src/assets/generic.png" # Hoja de sprite que corresponde a nerea
@@ -120,9 +120,15 @@ player = Player(sprite_sheet_path, SCREEN_WIDTH, SCREEN_HEIGHT)
 all_sprites = pygame.sprite.Group(player)
 pc = PC()
 
-# Instancia primer NPC
+# === INSTANCIAS DE NPC ==== #
+
+# Instancia señora Zafiro
 npc1_zafiro = NPC(sprite_sheet_zafiro, SCREEN_WIDTH, SCREEN_HEIGHT)
 frame_zafiro = npc1_zafiro.get_image(0, 32, 32) # recorta el frame que se necesita
+
+# Instancia Mel
+npc2_mel = NPC(sprite_sheet_mel, SCREEN_WIDTH, SCREEN_HEIGHT)
+frame_mel = npc2_mel.get_image(0, 32, 32) # recorta el frame que se necesita
 
 
 # Crear compuertas
@@ -275,7 +281,8 @@ while running:
         pass
 
     if (tag_level == "sala"):
-        screen.blit(frame_zafiro, (175,90)) # pone el frame obtenido en la ventana
+        screen.blit(frame_zafiro, (175,90)) # pone el frame de zafiro en la ventana
+        screen.blit(frame_mel, (280,90)) # pone el frame de mel en la ventana
 
     # Dibujar la compuerta de la sala
 
