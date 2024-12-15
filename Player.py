@@ -33,7 +33,8 @@ class Player(pygame.sprite.Sprite):
         self.rect = self.image.get_rect()
         self.rect.center = (screen_width // 2, screen_height // 2)
         self.current_frame = 0
-        self.animation_speed = 0.1
+        self.animation_speed = 0.5   # controla la velocidad de frames
+        self.desplazamiento_speed = 3 # controla la velocidad de desplazamiento
         self.last_update = pygame.time.get_ticks()
         self.walking = False
         self.direction = 'down'
@@ -43,19 +44,19 @@ class Player(pygame.sprite.Sprite):
         self.walking = False
 
         if keys[pygame.K_LEFT]:
-            self.rect.x -= 5
+            self.rect.x -= self.desplazamiento_speed
             self.walking = True
             self.direction = 'left'
         if keys[pygame.K_RIGHT]:
-            self.rect.x += 5
+            self.rect.x += self.desplazamiento_speed
             self.walking = True
             self.direction = 'right'
         if keys[pygame.K_UP]:
-            self.rect.y -= 5
+            self.rect.y -= self.desplazamiento_speed
             self.walking = True
             self.direction = 'up'
         if keys[pygame.K_DOWN]:
-            self.rect.y += 5
+            self.rect.y += self.desplazamiento_speed
             self.walking = True
             self.direction = 'down'
 
@@ -117,7 +118,7 @@ class Player(pygame.sprite.Sprite):
         distancia_rebote = 10
 
         # Intentar mover al jugador
-        self.rect.x += dx
+        #self.rect.x += dx
         for obj in collision_objects:
             if self.rect.colliderect(obj) and self.direction == "left":
                 self.rect.x = original_rect.x + distancia_rebote # Revertir movimiento horizontal izquierda
