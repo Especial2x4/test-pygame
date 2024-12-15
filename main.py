@@ -5,6 +5,7 @@ import sys
 from Player import *
 from PC import *
 from Compuerta import *
+from NPC import *
 
 # Inicializar Pygame
 pygame.init()
@@ -90,9 +91,45 @@ def get_collision_objects(tmx_data):
 # Obtener los objetos de colisión
 collision_objects = get_collision_objects(tmx_data)
 
+# Ruta de la hoja de sprites
+sprite_sheet_path = 'assets/sprite_sheet.png'
+# Ventas
+sprite_sheet_zafiro = "src/assets/zafiro.png" # Hoja de sprite que corresponde a la sra zafiro
+sprite_sheet_mel = "src/assets/mel.png" # Hoja de sprite que corresponde a mel
+sprite_sheet_john = "src/assets/generic.png" # Hoja de sprite que corresponde a john
+sprite_sheet_mariana = "src/assets/generic.png" # Hoja de sprite que corresponde a mariana
+sprite_sheet_nerea = "src/assets/generic.png" # Hoja de sprite que corresponde a nerea
+sprite_sheet_marcelo = "src/assets/generic.png" # Hoja de sprite que corresponde a marcelo
+sprite_sheet_nico = "src/assets/generic.png" # Hoja de sprite que corresponde a nico
+sprite_sheet_rothwailer = "src/assets/generic.png" # Hoja de sprite que corresponde a sra rothwailer
+# Producto ExtraTerrestre
+sprite_sheet_florencia1 = "src/assets/generic.png" # Hoja de sprite que corresponde a florencia uno
+sprite_sheet_florencia2 = "src/assets/generic.png" # Hoja de sprite que corresponde a florencia dos
+sprite_sheet_florencia3 = "src/assets/generic.png" # Hoja de sprite que corresponde a florencia tres
+sprite_sheet_daniel = "src/assets/generic.png" # Hoja de sprite que corresponde a daniel
+sprite_sheet_chuck = "src/assets/generic.png" # Hoja de sprite que corresponde a chuck
+sprite_sheet_jennifer = "src/assets/generic.png" # Hoja de sprite que corresponde a jennifer
+sprite_sheet_emilio = "src/assets/generic.png" # Hoja de sprite que corresponde a emilio
+sprite_sheet_camorre = "src/assets/generic.png" # Hoja de sprite que corresponde a camorre
+
+
 # Crear el jugador y PC
-player = Player(100, 90)
+#player = Player(100, 90)
+# Crear el jugador
+player = Player(sprite_sheet_path, SCREEN_WIDTH, SCREEN_HEIGHT)
+all_sprites = pygame.sprite.Group(player)
 pc = PC()
+
+# === INSTANCIAS DE NPC ==== #
+
+# Instancia señora Zafiro
+npc1_zafiro = NPC(sprite_sheet_zafiro, SCREEN_WIDTH, SCREEN_HEIGHT)
+frame_zafiro = npc1_zafiro.get_image(0, 32, 32) # recorta el frame que se necesita
+
+# Instancia Mel
+npc2_mel = NPC(sprite_sheet_mel, SCREEN_WIDTH, SCREEN_HEIGHT)
+frame_mel = npc2_mel.get_image(0, 32, 32) # recorta el frame que se necesita
+
 
 # Crear compuertas
 
@@ -100,8 +137,8 @@ puerta_sala = Compuerta(369, 15)
 puerta_comedor = Compuerta(369, 15)
 
 # Grupo de sprites
-all_sprites = pygame.sprite.Group()
-all_sprites.add(player)
+#all_sprites = pygame.sprite.Group()
+#all_sprites.add(player)
 
 print(all_sprites)
 
@@ -186,6 +223,7 @@ while running:
     
 
     # Obtener las teclas presionadas
+    """
     keys = pygame.key.get_pressed()
     dx = dy = 0
     if keys[pygame.K_LEFT]:
@@ -196,12 +234,16 @@ while running:
         dy = -player.speed
     if keys[pygame.K_DOWN]:
         dy = player.speed
+    """
 
     if not pc.active:
-        all_sprites.update(keys)
+        #all_sprites.update(keys)
+        all_sprites.update()
 
     # Mover al jugador
-    player.move(dx, dy, collision_objects)
+    player.move(0, 0, collision_objects)
+
+   
 
     # Limpiar la pantalla
     screen.fill((0, 0, 0))
@@ -210,7 +252,12 @@ while running:
     draw_map(screen, tmx_data)
 
     # Dibujar el jugador
-    player.draw(screen)
+    #player.draw(screen)
+
+     # Actualizar todos los sprites
+    all_sprites.update()
+
+    
 
     # Dibujar los objetos de colisión (opcional, para depuración)
     #for rect in collision_objects:
@@ -230,7 +277,12 @@ while running:
         #s.convert_alpha()               
         #s.fill((0,0,0,0))           
         #screen.blit(s,(0,0) , (144,126,36,36))
+        
         pass
+
+    if (tag_level == "sala"):
+        screen.blit(frame_zafiro, (175,90)) # pone el frame de zafiro en la ventana
+        screen.blit(frame_mel, (280,90)) # pone el frame de mel en la ventana
 
     # Dibujar la compuerta de la sala
 
@@ -258,11 +310,14 @@ while running:
 
     
 
+    # Dibuja los sprites agregados al grupo
+    all_sprites.draw(screen)
+
     # Actualizar la pantalla
     pygame.display.flip()
 
     # Controlar la velocidad de cuadros por segundo
-    pygame.time.Clock().tick(60)
+    pygame.time.Clock().tick(50)
 
 # Salir del programa
 pygame.quit()
