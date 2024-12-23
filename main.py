@@ -7,6 +7,8 @@ from PC import *
 from Compuerta import *
 from NPC import *
 
+from config import *
+
 # Inicializar Pygame
 pygame.init()
 
@@ -123,11 +125,11 @@ pc = PC()
 # === INSTANCIAS DE NPC ==== #
 
 # Instancia señora Zafiro
-npc1_zafiro = NPC(sprite_sheet_zafiro, SCREEN_WIDTH, SCREEN_HEIGHT)
+npc1_zafiro = NPC(sprite_sheet_zafiro, "Sra Zafiro", personality=NPC_PERSONALITY_DICT['hostil'])
 frame_zafiro = npc1_zafiro.get_image(0, 32, 32) # recorta el frame que se necesita
 
 # Instancia Mel
-npc2_mel = NPC(sprite_sheet_mel, SCREEN_WIDTH, SCREEN_HEIGHT)
+npc2_mel = NPC(sprite_sheet_mel, "Mel", personality=NPC_PERSONALITY_DICT['accesible'])
 frame_mel = npc2_mel.get_image(0, 32, 32) # recorta el frame que se necesita
 
 
