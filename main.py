@@ -125,11 +125,11 @@ pc = PC()
 # === INSTANCIAS DE NPC ==== #
 
 # Instancia señora Zafiro
-npc1_zafiro = NPC(sprite_sheet_zafiro, "Sra Zafiro", personality=NPC_PERSONALITY_DICT['hostil'])
+npc1_zafiro = NPC(sprite_sheet_zafiro, "Sra Zafiro", personality=NPC_PERSONALITY_DICT['hostil'], tupla_rect=((162, 110, 44, 49)))
 frame_zafiro = npc1_zafiro.get_image(0, 32, 32) # recorta el frame que se necesita
 
 # Instancia Mel
-npc2_mel = NPC(sprite_sheet_mel, "Mel", personality=NPC_PERSONALITY_DICT['accesible'])
+npc2_mel = NPC(sprite_sheet_mel, "Mel", personality=NPC_PERSONALITY_DICT['accesible'], tupla_rect=((272, 112, 47, 48)))
 frame_mel = npc2_mel.get_image(0, 32, 32) # recorta el frame que se necesita
 
 
@@ -285,6 +285,13 @@ while running:
     if (tag_level == "sala"):
         screen.blit(frame_zafiro, (175,90)) # pone el frame de zafiro en la ventana
         screen.blit(frame_mel, (280,90)) # pone el frame de mel en la ventana
+
+        if player.rect.colliderect(npc1_zafiro.rectangle) and tag_level == "sala":
+                print("He colisionado con señora zafiro")
+        if player.rect.colliderect(npc2_mel.rectangle) and tag_level == "sala":
+                print("He colisionado con Mel")
+                
+                #print(collision_objects)
 
     # Dibujar la compuerta de la sala
 
