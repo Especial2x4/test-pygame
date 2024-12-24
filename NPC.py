@@ -2,19 +2,20 @@
 import pygame
 
 class NPC(pygame.sprite.Sprite):
-    def __init__(self, sprite_sheet_path, name, personality, tupla_rect):
+    def __init__(self, sprite_sheet_path, name, personality, tupla_rect, shooter_num):
         super().__init__()
         # Cargar la hoja de sprites
         #self.sprite_sheet = pygame.image.load("src/assets/generic.png").convert_alpha()
         self.sprite_sheet = pygame.image.load(sprite_sheet_path).convert_alpha()
         self.image = self.sprite_sheet
-        top, left, width, height = tupla_rect
+        top, left, width, height = tupla_rect # Desenpaquetando la tupla
         self.rectangle = pygame.Rect(tupla_rect)
 
         #Propiades de los NPC's
         self.name = name
         self.personality = personality
         self.HP = 10
+        self.shooter_num = shooter_num
         
         # Dimensiones de los sprites
         self.sprite_width = 32
