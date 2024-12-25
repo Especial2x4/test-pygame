@@ -85,16 +85,16 @@ class Player(pygame.sprite.Sprite):
         if not self.walking:
             if self.direction == 'down':
                     self.image = self.walk_down[0]
-                    print(self.current_frame)
+                    #print(self.current_frame)
             if self.direction == 'up':
                     self.image = self.walk_up[0]
-                    print(self.current_frame)
+                    #print(self.current_frame)
             if self.direction == 'left':
                     self.image = self.walk_left[0]
-                    print(self.current_frame)
+                    #print(self.current_frame)
             if self.direction == 'right':
                     self.image = self.walk_right[1]
-                    print(self.current_frame)
+                    #print(self.current_frame)
 
               
 

@@ -8,6 +8,7 @@ from Player import *
 from PC import *
 from Compuerta import *
 from NPC import *
+from NPC_Detector import *
 
 from config import *
 
@@ -304,8 +305,9 @@ while running:
         # En esta parte actuará el NPC_Detector
         random_flag = random.randint(1,1000)
 
-        # npc_detector = NPC_Detector(NPC_LISTAO, random_flag) -> pone el cartelito de wait sobre el NPC activado, retorna dicho NPC y se pasa a la distancia para un duelo
-
+        npc_detector = NPC_Detector(NPC_LISTAO, random_flag) #-> pone el cartelito de wait sobre el NPC activado, retorna dicho NPC y se pasa a la distancia para un duelo
+        #npc_detector.show_npc_list()
+        npc_detector.shooter()
 
     # Dibujar la compuerta de la sala
 
