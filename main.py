@@ -1,6 +1,8 @@
+
 import pygame
 import pytmx
 import sys
+import random
 
 from Player import *
 from PC import *
@@ -292,12 +294,18 @@ while running:
         screen.blit(frame_zafiro, (175,90)) # pone el frame de zafiro en la ventana
         screen.blit(frame_mel, (280,90)) # pone el frame de mel en la ventana
 
+        # Colisiones de prueba
         if player.rect.colliderect(npc1_zafiro.rectangle) and tag_level == "sala":
                 print(f"He colisionado con {npc1_zafiro.name}")
         if player.rect.colliderect(npc2_mel.rectangle) and tag_level == "sala":
                 print(f"He colisionado con {npc2_mel.name}")
                 
-                #print(collision_objects)
+                
+        # En esta parte actuará el NPC_Detector
+        random_flag = random.randint(1,1000)
+
+        # npc_detector = NPC_Detector(NPC_LISTAO, random_flag) -> pone el cartelito de wait sobre el NPC activado, retorna dicho NPC y se pasa a la distancia para un duelo
+
 
     # Dibujar la compuerta de la sala
 
