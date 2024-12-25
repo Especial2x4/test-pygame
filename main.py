@@ -25,9 +25,8 @@ pygame.display.set_caption("Soportanto-IT")
 tag_level = "sistemas"
 
 # Control del tiempo
-start_time = pygame.time.get_ticks()
-sprite_visible = True  # Controla si el sprite se debe mostrar
-visible_duration = 5000  # Tiempo en milisegundos (5 segundos)
+enemy_timer = 0
+enemy_spawn_time = 5000
 
 
 # Cargar el archivo TMX
@@ -149,6 +148,9 @@ frame_zafiro = npc1_zafiro.get_image(0, 32, 32) # recorta el frame que se necesi
 # Instancia Mel
 npc2_mel = NPC_LISTAO[1]
 frame_mel = npc2_mel.get_image(0, 32, 32) # recorta el frame que se necesita
+
+random_flag = 0
+npc_detector = NPC_Detector(NPC_LISTAO, random_flag, sprite_sheet_wait, screen) #-> pone el cartelito de wait sobre el NPC activado, retorna dicho NPC y se pasa a la distancia para un duelo
 
 
 # Crear compuertas
@@ -301,8 +303,21 @@ while running:
         pass
 
     if (tag_level == "sala"):
+        # En esta parte actuará el NPC_Detector
+        random_flag = random.randint(1,500)
+        npc_detector.npc_new_random(random_flag)
+        
+        
         screen.blit(frame_zafiro, (175,90)) # pone el frame de zafiro en la ventana
         screen.blit(frame_mel, (280,90)) # pone el frame de mel en la ventana
+        
+        if npc_detector.shooter():
+             
+             screen.blit(wait_box, (380, 90))
+             pygame.time.wait(5000)
+             
+             
+             
         #screen.blit(wait_box, (380, 90))
 
         # Colisiones de prueba
@@ -312,10 +327,7 @@ while running:
                 print(f"He colisionado con {npc2_mel.name}")
                 
                 
-        # En esta parte actuará el NPC_Detector
-        random_flag = random.randint(1,1000)
-
-        npc_detector = NPC_Detector(NPC_LISTAO, random_flag, sprite_sheet_wait, screen) #-> pone el cartelito de wait sobre el NPC activado, retorna dicho NPC y se pasa a la distancia para un duelo
+        
         
 
                 
@@ -346,8 +358,6 @@ while running:
     #s.convert_alpha()               
     #s.fill((0,0,0,0))           
     #screen.blit(s,(0,0) , (144,126,36,36))
-
-    
 
     # Dibuja los sprites agregados al grupo
     all_sprites.draw(screen)

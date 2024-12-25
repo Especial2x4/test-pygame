@@ -22,6 +22,11 @@ class NPC_Detector(pygame.sprite.Sprite):
         for npc_name in self.npc_list:
             print(npc_name.name)
 
+
+    def npc_new_random(self, new_random):
+        self.random_flag = new_random
+
+
     
     def shooter(self):
         #print(self.random_flag)
@@ -33,7 +38,6 @@ class NPC_Detector(pygame.sprite.Sprite):
                 #self.screen.blit(self.wait_box, (380,90))
                 
                 return True
-    
 
     def show_wait_box(self):
         self.screen.blit(self.wait_box, (380,90))
