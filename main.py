@@ -24,6 +24,11 @@ pygame.display.set_caption("Soportanto-IT")
 #tag_level = ["sistemas" , "sala" , "toilette", "comedor" , "exterior"]
 tag_level = "sistemas"
 
+# Control del tiempo
+start_time = pygame.time.get_ticks()
+sprite_visible = True  # Controla si el sprite se debe mostrar
+visible_duration = 5000  # Tiempo en milisegundos (5 segundos)
+
 
 # Cargar el archivo TMX
 tmx_data = pytmx.load_pygame('src/nivel1/mapa1.tmx')
@@ -115,6 +120,10 @@ sprite_sheet_chuck = "src/assets/generic.png" # Hoja de sprite que corresponde a
 sprite_sheet_jennifer = "src/assets/generic.png" # Hoja de sprite que corresponde a jennifer
 sprite_sheet_emilio = "src/assets/generic.png" # Hoja de sprite que corresponde a emilio
 sprite_sheet_camorre = "src/assets/generic.png" # Hoja de sprite que corresponde a camorre
+
+# Ruta del alert box
+sprite_sheet_wait = "src/assets/wait-box.png"
+wait_box = pygame.image.load(sprite_sheet_wait).convert_alpha()
 
 
 # Crear el jugador y PC
@@ -294,6 +303,7 @@ while running:
     if (tag_level == "sala"):
         screen.blit(frame_zafiro, (175,90)) # pone el frame de zafiro en la ventana
         screen.blit(frame_mel, (280,90)) # pone el frame de mel en la ventana
+        #screen.blit(wait_box, (380, 90))
 
         # Colisiones de prueba
         if player.rect.colliderect(npc1_zafiro.rectangle) and tag_level == "sala":
@@ -305,9 +315,13 @@ while running:
         # En esta parte actuará el NPC_Detector
         random_flag = random.randint(1,1000)
 
-        npc_detector = NPC_Detector(NPC_LISTAO, random_flag) #-> pone el cartelito de wait sobre el NPC activado, retorna dicho NPC y se pasa a la distancia para un duelo
-        #npc_detector.show_npc_list()
-        npc_detector.shooter()
+        npc_detector = NPC_Detector(NPC_LISTAO, random_flag, sprite_sheet_wait, screen) #-> pone el cartelito de wait sobre el NPC activado, retorna dicho NPC y se pasa a la distancia para un duelo
+        
+
+                
+
+        #frame_wait = npc_detector.get_image(0, 32, 32)
+
 
     # Dibujar la compuerta de la sala
 
