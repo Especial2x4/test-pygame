@@ -24,9 +24,8 @@ pygame.display.set_caption("Soportanto-IT")
 #tag_level = ["sistemas" , "sala" , "toilette", "comedor" , "exterior"]
 tag_level = "sistemas"
 
-# Control del tiempo
-enemy_timer = 0
-enemy_spawn_time = 5000
+# Definir eventos personalizados
+SHOW_WAIT_BOX_EVENT = pygame.USEREVENT + 1
 
 
 # Cargar el archivo TMX
@@ -149,6 +148,7 @@ frame_zafiro = npc1_zafiro.get_image(0, 32, 32) # recorta el frame que se necesi
 npc2_mel = NPC_LISTAO[1]
 frame_mel = npc2_mel.get_image(0, 32, 32) # recorta el frame que se necesita
 
+# Instancia del NPC-detector
 random_flag = 0
 npc_detector = NPC_Detector(NPC_LISTAO, random_flag, sprite_sheet_wait, screen) #-> pone el cartelito de wait sobre el NPC activado, retorna dicho NPC y se pasa a la distancia para un duelo
 
@@ -170,6 +170,11 @@ while running:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             running = False
+        elif event.type == SHOW_WAIT_BOX_EVENT:
+            print("Imagen wait_box mostrada!")
+            screen.blit(wait_box, (0, 0))
+            pygame.display.update()
+            pygame.time.wait(5000)  # Pausar el bucle durante 5 segundos
 
         """
         if pc.active:
@@ -312,9 +317,7 @@ while running:
         screen.blit(frame_mel, (280,90)) # pone el frame de mel en la ventana
         
         if npc_detector.shooter():
-             
-             screen.blit(wait_box, (380, 90))
-             pygame.time.wait(5000)
+             pygame.event.post(pygame.event.Event(SHOW_WAIT_BOX_EVENT))
              
              
              
