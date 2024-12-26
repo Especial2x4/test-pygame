@@ -13,6 +13,9 @@ class NPC_Detector(pygame.sprite.Sprite):
         self.screen = screen
         # Carga la hoja de sprite
         self.wait_box = pygame.image.load(sprite_sheet_path).convert_alpha()
+        # NPC activado
+        self.npc_activo = None
+
         
     
 
@@ -33,6 +36,7 @@ class NPC_Detector(pygame.sprite.Sprite):
         for npc in self.npc_list:
             if npc.shooter_num == self.random_flag:
                 print(f"{npc.name} dice : WAIT!")
+                self.npc_activo = npc
                 # Dibujar el cuadro de diálogo encima del NPC
                 #wait_box_frame = self.get_image(0, 32, 32)
                 #self.screen.blit(self.wait_box, (380,90))
@@ -42,3 +46,7 @@ class NPC_Detector(pygame.sprite.Sprite):
     def show_wait_box(self):
         self.screen.blit(self.wait_box, (380,90))
         #time.sleep(5)
+
+
+    def get_npc_activate(self):
+        return self.npc_activo
