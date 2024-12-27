@@ -173,7 +173,10 @@ while running:
         elif event.type == SHOW_WAIT_BOX_EVENT:
             print("Imagen wait_box mostrada!")
             print(f"el NPC que se activó es : {npc_detector.get_npc_activate().name}")
-            screen.blit(wait_box, (0, 0))
+            print(f"posición de {npc_detector.get_npc_activate().name} : {npc_detector.get_npc_activate().rectangle}")
+            offset_left = npc_detector.get_npc_activate().rectangle.left + 10
+            offset_top = npc_detector.get_npc_activate().rectangle.top - 60
+            screen.blit(wait_box, (offset_left, offset_top))
             pygame.display.update()
             pygame.time.wait(5000)  # Pausar el bucle durante 5 segundos
 
