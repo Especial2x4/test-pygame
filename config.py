@@ -1,13 +1,9 @@
 
 
 
-
+# Propiedades de la ventana del juego
 SCREEN_WIDTH = 800
 SCREEN_HEIGHT = 600
-
-
-
-
 
 
 # Diccionario de personalidades de NPC
