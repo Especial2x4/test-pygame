@@ -26,7 +26,7 @@ class NPC_Detector(pygame.sprite.Sprite):
             print(npc_name.name)
 
 
-    def npc_new_random(self, new_random):
+    def set_npc_new_random(self, new_random):
         self.random_flag = new_random
 
 
