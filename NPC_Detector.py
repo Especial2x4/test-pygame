@@ -19,34 +19,36 @@ class NPC_Detector(pygame.sprite.Sprite):
         
     
 
-
+    # Función util para depuración
     def show_npc_list(self):
         print(self.npc_list)
         for npc_name in self.npc_list:
             print(npc_name.name)
 
 
+    # Setea un nuevo número random necesario para la función shooter
     def set_npc_new_random(self, new_random):
         self.random_flag = new_random
 
 
     
+    # Función principal del NPC_Detector que devuelve True para dar disparo al evento de cola
     def shooter(self):
-        #print(self.random_flag)
+        
         for npc in self.npc_list:
             if npc.shooter_num == self.random_flag:
                 print(f"{npc.name} dice : WAIT!")
                 self.npc_activo = npc
-                # Dibujar el cuadro de diálogo encima del NPC
-                #wait_box_frame = self.get_image(0, 32, 32)
-                #self.screen.blit(self.wait_box, (380,90))
+
                 
                 return True
 
+
+    # Muestra el mensaje de WAIT! sobre el NPC activado (trabajar más adelante en esta función)
     def show_wait_box(self):
         self.screen.blit(self.wait_box, (380,90))
-        #time.sleep(5)
+        
 
-
+    # Devuelve el NPC activado para poder trabajar con sus propiedades
     def get_npc_activate(self):
         return self.npc_activo
