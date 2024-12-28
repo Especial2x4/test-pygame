@@ -171,7 +171,7 @@ while running:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             running = False
-        elif event.type == SHOW_WAIT_BOX_EVENT:
+        elif event.type == SHOW_WAIT_BOX_EVENT: # Se ejecuta la lógica del evento personalizado
             print("Imagen wait_box mostrada!")
             print(f"el NPC que se activó es : {npc_detector.get_npc_activate().name}")
             print(f"posición de {npc_detector.get_npc_activate().name} : {npc_detector.get_npc_activate().rectangle}")
