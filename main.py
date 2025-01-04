@@ -18,7 +18,7 @@ pygame.init()
 # CONFIGURACIÓN DE LA VENTANA -------------------------------------------------------------------------------------------
 
 screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
-pygame.display.set_caption("Soportanto-IT")
+pygame.display.set_caption("Soportando-IT")
 
 # -----------------------------------------------------------------------------------------------------------------------
 
