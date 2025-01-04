@@ -1,3 +1,3 @@
-## NPC-detector
+## soportando-it
 
-Rama destinada a crear la funcionalidad de "detección y alerta" aleatoria previa al sistema de desafío de combate.
+Es la rama fundamental del desarrollo donde se van a mergear las distintas funcionalidades una vez implementadas.
