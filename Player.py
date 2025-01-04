@@ -11,10 +11,12 @@ def load_frames(sheet, frame_width, frame_height, num_frames, row):
         frames.append(frame)
     return frames
 
+# COMIENZA LA CLASE PLAYER ------------------------------------------------------------------------------------------------------------------
+
 class Player(pygame.sprite.Sprite):
     def __init__(self, sprite_sheet_path, screen_width, screen_height):
         super().__init__()
-        # Cargar la hoja de sprites
+        # Cargar la hoja de sprites (en este momento no se está cargando la ruta desde el parámetro)
         sprite_sheet = pygame.image.load("src/assets/player.png").convert_alpha()
         
         # Dimensiones de los sprites
@@ -85,20 +87,20 @@ class Player(pygame.sprite.Sprite):
         if not self.walking:
             if self.direction == 'down':
                     self.image = self.walk_down[0]
-                    print(self.current_frame)
+                    
             if self.direction == 'up':
                     self.image = self.walk_up[0]
-                    print(self.current_frame)
+                    
             if self.direction == 'left':
                     self.image = self.walk_left[0]
-                    print(self.current_frame)
+                    
             if self.direction == 'right':
                     self.image = self.walk_right[1]
-                    print(self.current_frame)
+                    
 
               
 
-        # Limitar el movimiento del jugador dentro de la pantalla
+        # Limitar el movimiento del jugador dentro de la pantalla ( Esto habría que ajustarlo más adelante )
         if self.rect.left < 0:
             self.rect.left = 0
         if self.rect.right > 800:
@@ -144,15 +146,9 @@ class Player(pygame.sprite.Sprite):
                 print(obj)
                 print(original_rect.y)
                 break
-        """
-        self.rect.y += dy
-        for obj in collision_objects:
-            if self.rect.colliderect(obj):
-                self.rect.y = original_rect.y - 10  # Revertir movimiento vertical
-                print(obj)
-                break
-        """  
+      
 
+    # Permite establecer la posición inicial del player            
     def set_position(self, x, y):
 
         self.x = x
