@@ -9,6 +9,7 @@ from PC import *
 from Compuerta import *
 from NPC import *
 from NPC_Detector import *
+from Cocinero import *
 
 from config import *
 
@@ -120,7 +121,8 @@ sprite_sheet_chuck = "src/assets/generic.png" # Hoja de sprite que corresponde a
 sprite_sheet_jennifer = "src/assets/generic.png" # Hoja de sprite que corresponde a jennifer
 sprite_sheet_emilio = "src/assets/generic.png" # Hoja de sprite que corresponde a emilio
 sprite_sheet_camorre = "src/assets/generic.png" # Hoja de sprite que corresponde a camorre
-
+# Cocinero
+sprite_sheet_cocinero = "src/assets/cocinero.png" # Hoja de sprite que corresponde a camorre
 # Ruta del alert box
 sprite_sheet_wait = "src/assets/wait-box.png"
 wait_box = pygame.image.load(sprite_sheet_wait).convert_alpha()
@@ -150,6 +152,9 @@ frame_zafiro = npc1_zafiro.get_image(0, 32, 32) # recorta el frame que se necesi
 npc2_mel = NPC_LISTAO[1]
 frame_mel = npc2_mel.get_image(0, 32, 32) # recorta el frame que se necesita
 
+# INSTANCIA DE Cocinero -----------------------------------------------------------------------------------------------------------------------
+jorgelio = Cocinero(sprite_sheet_cocinero)
+frame_jorgelio = jorgelio.get_image(0, 32, 32)
 # ---------------------------------------------------------------------------------------------------------------------------------------------
 
 # Instancia del NPC-detector
@@ -297,8 +302,12 @@ while running:
         if player.rect.colliderect(npc2_mel.rectangle) and tag_level == "sala":
                 print(f"He colisionado con {npc2_mel.name}")
                 
-                
-        
+
+    if (tag_level == "comedor"):
+         # SI ESTÁ EN EL COMEDOR SE DIBUJA EL COCINERO
+         screen.blit(frame_jorgelio, (135,60)) # pone el frame de zafiro en la ventana
+         
+
 
 
     # Dibujar la compuerta de la sala
