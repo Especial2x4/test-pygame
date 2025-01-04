@@ -1,3 +1,8 @@
-## soportando-it
+## cocinero-developer
 
-Es la rama fundamental del desarrollo donde se van a mergear las distintas funcionalidades una vez implementadas.
+Rama destinada a :
+
+1. Desarrollar e insertar Objeto cocinero
+    
+2. Desarrollar menú cocinero
+    
