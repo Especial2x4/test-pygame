@@ -36,7 +36,7 @@ class Player(pygame.sprite.Sprite):
         self.rect.center = (screen_width // 2, screen_height // 2)
         self.current_frame = 0
         self.animation_speed = 0.5   # controla la velocidad de frames
-        self.desplazamiento_speed = 3 # controla la velocidad de desplazamiento
+        self.desplazamiento_speed = 6 # controla la velocidad de desplazamiento
         self.last_update = pygame.time.get_ticks()
         self.walking = False
         self.direction = 'down'

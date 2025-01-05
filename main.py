@@ -295,11 +295,12 @@ while running:
             
 
 
-    if not pc.active:
+    if not pc.active and not barra_comedor.active:
         all_sprites.update()
+        # Mover al jugador si la PC y la barra del comedor no están activas
+        player.move(0, 0, collision_objects)
 
-    # Mover al jugador si la PC no está activa
-    player.move(0, 0, collision_objects)
+    
 
    
 
@@ -311,8 +312,8 @@ while running:
 
     
 
-    # Actualizar todos los sprites
-    all_sprites.update()
+    # Actualizar todos los sprites ( Analizar esta linea más adelante)
+    #all_sprites.update()
 
     
 
@@ -382,8 +383,12 @@ while running:
         
     # ---------------------------------------------------------------------------------------------------------------------------------------------
 
-    # Dibuja los sprites agregados al grupo
-    all_sprites.draw(screen)
+    # Dibuja los sprites agregados al grupo (player) solo si la pc y la barra del comedor no están activas
+    if not pc.active and not barra_comedor.active:
+         all_sprites.draw(screen)
+        
+         
+    
 
     # Actualizar la pantalla
     pygame.display.flip()

@@ -29,7 +29,7 @@ class Barra:
     def draw(self, screen):
         if self.active:
             screen.fill((0, 0, 0))
-            text = self.font.render("Welcome to the PC!", True, (255, 255, 255))
+            text = self.font.render("Acá va a ir el menú del comedor", True, (255, 255, 255))
             screen.blit(text, (50, 50))
             text = self.font.render("Press Enter to exit", True, (255, 255, 255))
             screen.blit(text, (50, 100))
