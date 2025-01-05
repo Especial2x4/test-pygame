@@ -8,6 +8,8 @@ class Barra:
         self.active = False
         self.rectangle = pygame.Rect(pos_x, pos_y, 142, 18)
 
+        self.selected_option = 0
+
 
     # Función para dibujar el menú con opciones resaltadas
     def draw_menu(self, screen, options, selected_index, x, y, color, selected_color, rect_color):
@@ -90,8 +92,13 @@ class Barra:
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_RETURN:
                 self.close()
+            elif event.key == pygame.K_UP:
+                self.selected_option = (self.selected_option - 1) % len(["Macarrones con salsa", "Sanguchito de queso"])  # Mover hacia arriba
+            elif event.key == pygame.K_DOWN:
+                self.selected_option = (self.selected_option + 1) % len(["Macarrones con salsa", "Sanguchito de queso"])  # Mover hacia abajo
 
-    def draw(self, screen, selected_option):
+    
+    def draw(self, screen):
         if self.active:
             screen.fill((255, 255, 255))
             #text = self.font.render("Acá va a ir el menú del comedor", True, (255, 255, 255))
@@ -99,5 +106,5 @@ class Barra:
             #text = self.font.render("Press Enter to exit", True, (255, 255, 255))
             #screen.blit(text, (50, 100))
             self.draw_text(screen, "Hola que vas a comprar?", 430, 90, (0,0,0))
-            self.draw_menu(screen,["Reiniciar la PC"], selected_option, 60, 460)  # Dibuja el menú con opciones
+            self.draw_menu(screen,["Macarrones con salsa", "Sanguchito de queso"], self.selected_option, 60, 460, (0,0,0), (255,255,255), (0,0,255))  # Dibuja el menú con opciones
             
