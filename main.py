@@ -157,8 +157,8 @@ npc2_mel = NPC_LISTAO[1]
 frame_mel = npc2_mel.get_image(0, 32, 32) # recorta el frame que se necesita
 
 # INSTANCIA DE Cocinero -----------------------------------------------------------------------------------------------------------------------
-jorgelio = Cocinero(sprite_sheet_cocinero)
-frame_jorgelio = jorgelio.get_image(0, 32, 32)
+cocinero = Cocinero(sprite_sheet_cocinero, "src/assets/portraits/cocinero.png")
+frame_cocinero = cocinero.get_image(0, 32, 32)
 # ---------------------------------------------------------------------------------------------------------------------------------------------
 
 # Instancia del NPC-detector ------------------------------------------------------------------------------------------------------------------
@@ -236,7 +236,7 @@ while running:
                 if event.type == pygame.KEYDOWN:
                     if event.key == pygame.K_e:
                         barra_comedor.open()
-                        barra_comedor.draw(screen)
+                        barra_comedor.draw(screen, cocinero)
                      
 
         
@@ -356,7 +356,7 @@ while running:
 
     if (tag_level == "comedor"):
          # SI ESTÁ EN EL COMEDOR SE DIBUJA EL COCINERO
-         screen.blit(frame_jorgelio, (135,60)) # pone el frame de zafiro en la ventana
+         screen.blit(frame_cocinero, (135,60)) # pone el frame de zafiro en la ventana
          
 
 
@@ -374,7 +374,7 @@ while running:
     # BLOQUE NECESARIO PARA INGRESAR AL MENÚ DEL COMEDOR --------------------------------------------------------------------------------------
 
     if (barra_comedor.active and tag_level == "comedor"):
-        barra_comedor.draw(screen)
+        barra_comedor.draw(screen, cocinero)
 
 
     # Dibujar la barra del comedor

@@ -98,13 +98,14 @@ class Barra:
                 self.selected_option = (self.selected_option + 1) % len(["Macarrones con salsa", "Sanguchito de queso"])  # Mover hacia abajo
 
     
-    def draw(self, screen):
+    def draw(self, screen, cocinero):
         if self.active:
             screen.fill((255, 255, 255))
             #text = self.font.render("Acá va a ir el menú del comedor", True, (255, 255, 255))
             #screen.blit(text, (50, 50))
             #text = self.font.render("Press Enter to exit", True, (255, 255, 255))
             #screen.blit(text, (50, 100))
+            screen.blit(cocinero.portrait, (50, 50))  # Posición del retrato en la pantalla
             self.draw_text(screen, "Hola que vas a comprar?", 430, 90, (0,0,0))
             self.draw_menu(screen,["Macarrones con salsa", "Sanguchito de queso"], self.selected_option, 60, 460, (0,0,0), (255,255,255), (0,0,255))  # Dibuja el menú con opciones
             
