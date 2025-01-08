@@ -8,6 +8,7 @@ class Barra:
         self.active = False
         self.rectangle = pygame.Rect(pos_x, pos_y, 142, 18)
 
+        self.listao_menu = ["Lomito de atún a la provenzal", "Macarrones con salsa Boloñesa", "Sanguchito de queso"]
         self.selected_option = 0
 
 
@@ -91,11 +92,12 @@ class Barra:
     def handle_event(self, event):
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_RETURN:
+                print(f"voy a comer {self.get_selected_option()}") # Imprime la comida elegida
                 self.close()
             elif event.key == pygame.K_UP:
-                self.selected_option = (self.selected_option - 1) % len(["Macarrones con salsa", "Sanguchito de queso"])  # Mover hacia arriba
+                self.selected_option = (self.selected_option - 1) % len(self.listao_menu)  # Mover hacia arriba
             elif event.key == pygame.K_DOWN:
-                self.selected_option = (self.selected_option + 1) % len(["Macarrones con salsa", "Sanguchito de queso"])  # Mover hacia abajo
+                self.selected_option = (self.selected_option + 1) % len(self.listao_menu)  # Mover hacia abajo
 
     
     def draw(self, screen, cocinero):
@@ -107,5 +109,13 @@ class Barra:
             #screen.blit(text, (50, 100))
             screen.blit(cocinero.portrait, (50, 50))  # Posición del retrato en la pantalla
             self.draw_text(screen, "Hola que vas a comprar?", 430, 90, (0,0,0))
-            self.draw_menu(screen,["Macarrones con salsa", "Sanguchito de queso"], self.selected_option, 60, 460, (0,0,0), (255,255,255), (0,0,255))  # Dibuja el menú con opciones
+            self.draw_menu(screen, self.listao_menu, self.selected_option, 60, 460, (0,0,0), (255,255,255), (0,0,255))  # Dibuja el menú con opciones
+
+
+    # Retorna la opción elegida en el menú
+    def get_selected_option(self):
+        comida_elegida = self.listao_menu[self.selected_option]
+        #print(f"voy a comer {comida_elegida}")
+
+        return comida_elegida
             
