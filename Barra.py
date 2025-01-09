@@ -2,16 +2,19 @@ import pygame
 
 
 class Barra:
-    def __init__(self, pos_x, pos_y):
+    def __init__(self, screen, pos_x, pos_y):
         super().__init__()
         self.font = pygame.font.Font(None, 36)
         self.active = False
         self.rectangle = pygame.Rect(pos_x, pos_y, 142, 18)
+        self.screen = screen #El screen acá puede estár sobrando
+        self.log_testo = ""
+        self.interruptor = 0
 
         #self.listao_menu = ["Lomito de atún a la provenzal", "Macarrones con salsa Boloñesa", "Sanguchito de queso"]
         self.dict_menu = {
         "Lomito de atún a la provenzal": 15,
-        "Macarrones con salsa Boloñesa": 10,
+        "Macarrones con salsa": 10,
         "Sanguchito de queso": 1
         }
         self.selected_option = 0
@@ -98,11 +101,19 @@ class Barra:
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_RETURN:
                 print(f"voy a comer {self.get_selected_option_name()}") # Imprime la comida elegida
-                self.close()
-            elif event.key == pygame.K_UP:
+                self.log_testo = f"{self.get_selected_option_name()}"
+                print("por aquí pasó")
+                self.interruptor += 1
+                if self.interruptor == 2:
+                    self.close()
+            elif event.key == pygame.K_UP and self.interruptor == 0:
                 self.selected_option = (self.selected_option - 1) % len(self.dict_menu)  # Mover hacia arriba
-            elif event.key == pygame.K_DOWN:
+            elif event.key == pygame.K_DOWN and self.interruptor == 0:
                 self.selected_option = (self.selected_option + 1) % len(self.dict_menu)  # Mover hacia abajo
+            
+
+        
+            
 
     
     def draw(self, screen, cocinero):
@@ -114,6 +125,7 @@ class Barra:
             #screen.blit(text, (50, 100))
             screen.blit(cocinero.portrait, (50, 50))  # Posición del retrato en la pantalla
             self.draw_text(screen, "Hola que vas a comprar?", 430, 90, (0,0,0))
+            self.draw_text(screen, self.log_testo, 430, 160, (0,0,0))
             self.draw_menu(screen, self.dict_menu, self.selected_option, 60, 460, (0,0,0), (255,255,255), (0,0,255))  # Dibuja el menú con opciones
 
 

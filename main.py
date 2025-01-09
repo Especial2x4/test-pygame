@@ -172,7 +172,7 @@ puerta_sala = Compuerta(369, 15)
 puerta_comedor = Compuerta(369, 15)
 
 # Crear la barra del comedor --------------------------------------------------------------------------------------------------------------------
-barra_comedor = Barra(80, 100)
+barra_comedor = Barra(screen, 80, 100)
 
 
 print(all_sprites)
