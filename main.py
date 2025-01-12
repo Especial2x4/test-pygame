@@ -11,6 +11,7 @@ from NPC import *
 from NPC_Detector import *
 from Cocinero import *
 from Barra import *
+from Combate import *
 
 from config import *
 
@@ -174,6 +175,9 @@ puerta_comedor = Compuerta(369, 15)
 # Crear la barra del comedor --------------------------------------------------------------------------------------------------------------------
 barra_comedor = Barra(screen, 80, 100)
 
+# Crear objeto combate --------------------------------------------------------------------------------------------------------------------------
+combate = Combate(screen)
+
 
 print(all_sprites)
 
@@ -192,6 +196,8 @@ while running:
             screen.blit(wait_box, (offset_left, offset_top))
             pygame.display.update()
             pygame.time.wait(5000)  # Pausar el bucle durante 5 segundos
+            print(f"screen: {type(screen)}, SCREEN_WIDTH: {SCREEN_WIDTH}, SCREEN_HEIGHT: {SCREEN_HEIGHT}")
+            combate.spiral_pixel_transition(sound=None)
         """
         elif event.type == SHOW_COMIDA_MENU_EVENT: # Se muestra el menú de comida
             if tag_show_menu == True:
