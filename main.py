@@ -9,6 +9,8 @@ from PC import *
 from Compuerta import *
 from NPC import *
 from NPC_Detector import *
+from Cocinero import *
+from Barra import *
 
 from config import *
 
@@ -25,9 +27,12 @@ pygame.display.set_caption("Soportando-IT")
 # Interruptor de nivel
 tag_level = "sistemas"
 
+# Interruptor de menú comedor
+tag_show_menu = False
+
 # Definir eventos personalizados
 SHOW_WAIT_BOX_EVENT = pygame.USEREVENT + 1 # Evento que muestra el mensaje de de WAIT cuando se activa el NPC_Detector
-
+SHOW_COMIDA_MENU_EVENT = pygame.USEREVENT + 2
 
 # Cargar el archivo TMX
 tmx_data = pytmx.load_pygame('src/nivel1/mapa1.tmx')
@@ -120,7 +125,8 @@ sprite_sheet_chuck = "src/assets/generic.png" # Hoja de sprite que corresponde a
 sprite_sheet_jennifer = "src/assets/generic.png" # Hoja de sprite que corresponde a jennifer
 sprite_sheet_emilio = "src/assets/generic.png" # Hoja de sprite que corresponde a emilio
 sprite_sheet_camorre = "src/assets/generic.png" # Hoja de sprite que corresponde a camorre
-
+# Cocinero
+sprite_sheet_cocinero = "src/assets/cocinero.png" # Hoja de sprite que corresponde a camorre
 # Ruta del alert box
 sprite_sheet_wait = "src/assets/wait-box.png"
 wait_box = pygame.image.load(sprite_sheet_wait).convert_alpha()
@@ -150,17 +156,23 @@ frame_zafiro = npc1_zafiro.get_image(0, 32, 32) # recorta el frame que se necesi
 npc2_mel = NPC_LISTAO[1]
 frame_mel = npc2_mel.get_image(0, 32, 32) # recorta el frame que se necesita
 
+# INSTANCIA DE Cocinero -----------------------------------------------------------------------------------------------------------------------
+cocinero = Cocinero(sprite_sheet_cocinero, "src/assets/portraits/cocinero.png")
+frame_cocinero = cocinero.get_image(0, 32, 32)
 # ---------------------------------------------------------------------------------------------------------------------------------------------
 
-# Instancia del NPC-detector
+# Instancia del NPC-detector ------------------------------------------------------------------------------------------------------------------
 random_flag = 0
 npc_detector = NPC_Detector(NPC_LISTAO, random_flag, sprite_sheet_wait, screen) #-> pone el cartelito de wait sobre el NPC activado, retorna dicho NPC y se pasa a la distancia para un duelo
 
 
-# Crear compuertas
+# Crear compuertas -----------------------------------------------------------------------------------------------------------------------------
 
 puerta_sala = Compuerta(369, 15)
 puerta_comedor = Compuerta(369, 15)
+
+# Crear la barra del comedor --------------------------------------------------------------------------------------------------------------------
+barra_comedor = Barra(screen, 80, 100)
 
 
 print(all_sprites)
@@ -180,11 +192,26 @@ while running:
             screen.blit(wait_box, (offset_left, offset_top))
             pygame.display.update()
             pygame.time.wait(5000)  # Pausar el bucle durante 5 segundos
+        """
+        elif event.type == SHOW_COMIDA_MENU_EVENT: # Se muestra el menú de comida
+            if tag_show_menu == True:
+                screen.fill((0, 0, 0))
+                text = pygame.font.Font(None, 36).render("Welcome to the PC!", True, (255, 255, 255))
+                screen.blit(text, (50, 50))
+                text = pygame.font.Font(None, 36).render("Press Enter to exit", True, (255, 255, 255))
+                screen.blit(text, (50, 100))
+                pygame.display.update()
+                #tag_show_menu = False
+        """    
+            
+            
+            
+            
 
       
 
         
-        # Si colisiona con la PC
+        # Si colisiona con la PC ---------------------------------------------------------------------------------------------------------------
       
         if pc.active:
             pc.handle_event(event)
@@ -196,6 +223,20 @@ while running:
                     if event.key == pygame.K_e:
                         pc.open()
                         pc.draw(screen)
+
+        
+        # Si colisiona con la barra ------------------------------------------------------------------------------------------------------------
+      
+        if barra_comedor.active:
+            barra_comedor.handle_event(event)
+        else:
+            if player.rect.colliderect(barra_comedor.rectangle) and tag_level == "comedor":
+                print("he colisionado con la barra y voy a pedir comida")
+                print(barra_comedor.rectangle.x, barra_comedor.rectangle.y)
+                if event.type == pygame.KEYDOWN:
+                    if event.key == pygame.K_e:
+                        barra_comedor.open()
+                        barra_comedor.draw(screen, cocinero)
                      
 
         
@@ -237,15 +278,29 @@ while running:
                 player.set_position(380, 48)
                 tmx_data = pytmx.load_pygame('src/nivel2/mapa2.tmx')
                 collision_objects = get_collision_objects(tmx_data)
+
+
+        """
+        if player.rect.colliderect(barra_comedor.rectangle) and tag_level == "comedor":
+                print("He colisionado con la barra y voy a pedir comida")
+                
+                if tag_show_menu == False:
+                     pygame.event.post(pygame.event.Event(SHOW_COMIDA_MENU_EVENT))
+                     tag_show_menu = True
+        """
+                        
+                
+                
                 
             
 
 
-    if not pc.active:
+    if not pc.active and not barra_comedor.active:
         all_sprites.update()
+        # Mover al jugador si la PC y la barra del comedor no están activas
+        player.move(0, 0, collision_objects)
 
-    # Mover al jugador si la PC no está activa
-    player.move(0, 0, collision_objects)
+    
 
    
 
@@ -257,15 +312,16 @@ while running:
 
     
 
-    # Actualizar todos los sprites
-    all_sprites.update()
+    # Actualizar todos los sprites ( Analizar esta linea más adelante)
+    #all_sprites.update()
 
     
 
-    
+    # BLOQUE NECESARIO PARA INGRESAR AL INVENTARIO DE LA PC --------------------------------------------------------------------------------------
     
     if (pc.active and tag_level == "sistemas"):
         pc.draw(screen)
+
         
     
     if (tag_level == "sistemas"):
@@ -273,7 +329,7 @@ while running:
         pygame.draw.rect(screen, [0, 0, 0], [144, 126, 36, 36], 1)
         
         
-        pass
+    # ---------------------------------------------------------------------------------------------------------------------------------------------
 
     if (tag_level == "sala"):
         
@@ -297,8 +353,12 @@ while running:
         if player.rect.colliderect(npc2_mel.rectangle) and tag_level == "sala":
                 print(f"He colisionado con {npc2_mel.name}")
                 
-                
-        
+
+    if (tag_level == "comedor"):
+         # SI ESTÁ EN EL COMEDOR SE DIBUJA EL COCINERO
+         screen.blit(frame_cocinero, (135,60)) # pone el frame de zafiro en la ventana
+         
+
 
 
     # Dibujar la compuerta de la sala
@@ -311,9 +371,24 @@ while running:
         pygame.draw.rect(screen, (255,0,0), puerta_comedor.rectangle)
     
 
+    # BLOQUE NECESARIO PARA INGRESAR AL MENÚ DEL COMEDOR --------------------------------------------------------------------------------------
 
-    # Dibuja los sprites agregados al grupo
-    all_sprites.draw(screen)
+    if (barra_comedor.active and tag_level == "comedor"):
+        barra_comedor.draw(screen, cocinero)
+
+
+    # Dibujar la barra del comedor
+    if barra_comedor.active == False and tag_level == "comedor": # Se dibuja la barra del comedor
+        pygame.draw.rect(screen, (0,0,255), barra_comedor.rectangle)
+        
+    # ---------------------------------------------------------------------------------------------------------------------------------------------
+
+    # Dibuja los sprites agregados al grupo (player) solo si la pc y la barra del comedor no están activas
+    if not pc.active and not barra_comedor.active:
+         all_sprites.draw(screen)
+        
+         
+    
 
     # Actualizar la pantalla
     pygame.display.flip()

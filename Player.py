@@ -18,6 +18,8 @@ class Player(pygame.sprite.Sprite):
         super().__init__()
         # Cargar la hoja de sprites (en este momento no se está cargando la ruta desde el parámetro)
         sprite_sheet = pygame.image.load("src/assets/player.png").convert_alpha()
+
+        self.presupuesto = 1000 # Valor Hardcodeado que en un futuro tiene que ser variable
         
         # Dimensiones de los sprites
         self.sprite_width = 32
@@ -36,7 +38,7 @@ class Player(pygame.sprite.Sprite):
         self.rect.center = (screen_width // 2, screen_height // 2)
         self.current_frame = 0
         self.animation_speed = 0.5   # controla la velocidad de frames
-        self.desplazamiento_speed = 3 # controla la velocidad de desplazamiento
+        self.desplazamiento_speed = 6 # controla la velocidad de desplazamiento
         self.last_update = pygame.time.get_ticks()
         self.walking = False
         self.direction = 'down'
@@ -153,4 +155,9 @@ class Player(pygame.sprite.Sprite):
 
         self.x = x
         self.y = y
-        self.rect = self.image.get_rect(topleft=(self.x, self.y))         
+        self.rect = self.image.get_rect(topleft=(self.x, self.y))
+
+
+    # Devuelve el presupuesto del player
+    def get_presupuesto(self):
+         return self.presupuesto       
