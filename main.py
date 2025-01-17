@@ -132,6 +132,9 @@ sprite_sheet_cocinero = "src/assets/cocinero.png" # Hoja de sprite que correspon
 sprite_sheet_wait = "src/assets/wait-box.png"
 wait_box = pygame.image.load(sprite_sheet_wait).convert_alpha()
 
+# RUTAS DE PORTRAITS -----------------------------------------------------------------------------------------------------------------------
+sra_zafiro_portrait = "src/assets/portraits/sra-zafiro-d.png"
+
 
 # INSTANCIA DE PLAYER -----------------------------------------------------------------------------------------------------------------------
 player = Player(sprite_sheet_path, SCREEN_WIDTH, SCREEN_HEIGHT)
@@ -142,8 +145,8 @@ pc = PC()
 
 NPC_LISTAO = [
      
-     NPC(sprite_sheet_zafiro, "Sra Zafiro", personality=NPC_PERSONALITY_DICT['hostil'], tupla_rect=((162, 110, 44, 49)), shooter_num=10),
-     NPC(sprite_sheet_mel, "Mel", personality=NPC_PERSONALITY_DICT['accesible'], tupla_rect=((272, 112, 47, 48)), shooter_num=20)
+     NPC(sprite_sheet_zafiro, sra_zafiro_portrait, "Sra Zafiro", personality=NPC_PERSONALITY_DICT['hostil'], tupla_rect=((162, 110, 44, 49)), shooter_num=10),
+     NPC(sprite_sheet_mel, sra_zafiro_portrait, "Mel", personality=NPC_PERSONALITY_DICT['accesible'], tupla_rect=((272, 112, 47, 48)), shooter_num=20)
      
 ]
 
@@ -198,6 +201,7 @@ while running:
             pygame.time.wait(5000)  # Pausar el bucle durante 5 segundos
             print(f"screen: {type(screen)}, SCREEN_WIDTH: {SCREEN_WIDTH}, SCREEN_HEIGHT: {SCREEN_HEIGHT}")
             combate.spiral_pixel_transition(sound=None)
+            combate.system_combat(npc_detector.get_npc_activate())
         """
         elif event.type == SHOW_COMIDA_MENU_EVENT: # Se muestra el menú de comida
             if tag_show_menu == True:
