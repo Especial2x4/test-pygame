@@ -7,7 +7,7 @@ class NPC(pygame.sprite.Sprite):
         # Cargar la hoja de sprites
         self.sprite_sheet = pygame.image.load(sprite_sheet_path).convert_alpha()
         self.image = self.sprite_sheet
-        top, left, width, height = tupla_rect # Desenpaquetando la tupla
+        top, left, width, height = tupla_rect # Desempaquetando la tupla
         self.rectangle = pygame.Rect(tupla_rect)
         self.portrait = pygame.image.load(path_portrait)
         self.portrait = pygame.transform.scale(self.portrait, (350, 350))  # Escala la imagen a 350x350

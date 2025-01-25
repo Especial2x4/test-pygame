@@ -11,7 +11,7 @@ SCREEN_HEIGHT = 600
 NPC_PERSONALITY_DICT = {
     'accesible' : [],
     'moderado'  : [],
-    'hostil'    : ["Dale que me anda para la M#$&D4 la pc"]
+    'hostil'    : ["Dale que me anda para la M#$&D4 la pc", "No sé que le pasa a esta cosa..."]
 }
 
 
