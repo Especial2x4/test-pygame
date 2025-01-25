@@ -142,13 +142,21 @@ class Combate():
             self.screen.blit(line_surface, (x, y + i * self.font.get_linesize()))
 
 
+    # Función hardcodeada para volver el menú al estado inicial
+    def volver_estado_inicial(self, npc):
+
+        self.menu_state = "main_menu"
+        self.battle_log = []
+        self.sra_zafiro_text = "Dale que me anda para la M1#rd4 la computadora!"
+        self.menu_options = ["Resolver", "Escapar"]
+        
 
 
     # Función que lanza el sistema de combate -------------------------------------------------------------
 
     def system_combat(self, npc):
 
-        
+
         width = self.screen.get_width()
 
         running = True
@@ -187,13 +195,15 @@ class Combate():
                 self.draw_text("Has destrabado gpupdate", 60, 260)
                 self.draw_text("Presiona enter para continuar.", 120, 320)
                 self.draw_text("...Fin...", 60, 420)
+                
 
             # Dibujar registros de batalla solo si no estamos en la pantalla de recompensas
             if self.menu_state != "reward_screen":
                 log_pos_x = 60
                 log_pos_y = 500
+                interlineado = 30
                 for i, log in enumerate(self.battle_log[-3:]):  # Solo muestra los últimos 3 mensajes
-                    self.draw_text(log, log_pos_x, log_pos_y + i * 20)
+                    self.draw_text(log, log_pos_x, log_pos_y + i * interlineado)
 
             # Manejo de eventos
             # Eventos
@@ -213,6 +223,8 @@ class Combate():
                                 print("has elegido resolver")
                             elif self.selected_option == 1:  # Escapar
                                 self.battle_log.append("¡Has escapado!")
+                                self.volver_estado_inicial()
+                                npc.current_hp = 10
                                 running = False
                     elif self.menu_state == "resolver_menu":
                         if event.key == pygame.K_RETURN and self.sra_zafiro_text != "chau":  # Reiniciar la PC
@@ -224,6 +236,8 @@ class Combate():
                             self.menu_state = "reward_screen"
                     elif self.menu_state == "reward_screen":
                         if event.key == pygame.K_RETURN:  # Presionar Enter en la pantalla de recompensas
+                            self.volver_estado_inicial(npc)
+                            npc.current_hp = 10
                             running = False  # O puedes cambiar a otro estado o acción
 
             pygame.display.flip()
