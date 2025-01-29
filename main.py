@@ -111,21 +111,21 @@ sprite_sheet_path = 'assets/sprite_sheet.png'
 # Ventas
 sprite_sheet_zafiro = "src/assets/zafiro.png" # Hoja de sprite que corresponde a la sra zafiro
 sprite_sheet_mel = "src/assets/mel.png" # Hoja de sprite que corresponde a mel
-sprite_sheet_john = "src/assets/generic.png" # Hoja de sprite que corresponde a john
-sprite_sheet_mariana = "src/assets/generic.png" # Hoja de sprite que corresponde a mariana
-sprite_sheet_nerea = "src/assets/generic.png" # Hoja de sprite que corresponde a nerea
-sprite_sheet_marcelo = "src/assets/generic.png" # Hoja de sprite que corresponde a marcelo
-sprite_sheet_nico = "src/assets/generic.png" # Hoja de sprite que corresponde a nico
-sprite_sheet_rothwailer = "src/assets/generic.png" # Hoja de sprite que corresponde a sra rothwailer
+sprite_sheet_john = "src/assets/john.png" # Hoja de sprite que corresponde a john
+sprite_sheet_mariana = "src/assets/mariana.png" # Hoja de sprite que corresponde a mariana
+sprite_sheet_nerea = "src/assets/nerea.png" # Hoja de sprite que corresponde a nerea
+sprite_sheet_marcelo = "src/assets/marcelo.png" # Hoja de sprite que corresponde a marcelo
+sprite_sheet_nico = "src/assets/nico.png" # Hoja de sprite que corresponde a nico
+sprite_sheet_rothwailer = "src/assets/rothwailer.png" # Hoja de sprite que corresponde a sra rothwailer
 # Producto ExtraTerrestre
-sprite_sheet_florencia1 = "src/assets/generic.png" # Hoja de sprite que corresponde a florencia uno
-sprite_sheet_florencia2 = "src/assets/generic.png" # Hoja de sprite que corresponde a florencia dos
-sprite_sheet_florencia3 = "src/assets/generic.png" # Hoja de sprite que corresponde a florencia tres
-sprite_sheet_daniel = "src/assets/generic.png" # Hoja de sprite que corresponde a daniel
-sprite_sheet_chuck = "src/assets/generic.png" # Hoja de sprite que corresponde a chuck
-sprite_sheet_jennifer = "src/assets/generic.png" # Hoja de sprite que corresponde a jennifer
-sprite_sheet_emilio = "src/assets/generic.png" # Hoja de sprite que corresponde a emilio
-sprite_sheet_camorre = "src/assets/generic.png" # Hoja de sprite que corresponde a camorre
+sprite_sheet_florencia1 = "src/assets/florencia1.png" # Hoja de sprite que corresponde a florencia uno
+sprite_sheet_florencia2 = "src/assets/florencia2.png" # Hoja de sprite que corresponde a florencia dos
+sprite_sheet_florencia3 = "src/assets/florencia3.png" # Hoja de sprite que corresponde a florencia tres
+sprite_sheet_daniel = "src/assets/daniel.png" # Hoja de sprite que corresponde a daniel
+sprite_sheet_chuck = "src/assets/chuck.png" # Hoja de sprite que corresponde a chuck
+sprite_sheet_jennifer = "src/assets/jennifer.png" # Hoja de sprite que corresponde a jennifer
+sprite_sheet_emilio = "src/assets/emilio.png" # Hoja de sprite que corresponde a emilio
+sprite_sheet_camorre = "src/assets/camorre.png" # Hoja de sprite que corresponde a camorre
 # Cocinero
 sprite_sheet_cocinero = "src/assets/cocinero.png" # Hoja de sprite que corresponde a camorre
 # Ruta del alert box
@@ -146,7 +146,21 @@ pc = PC()
 NPC_LISTAO = [
      
      NPC(sprite_sheet_zafiro, sra_zafiro_portrait, "Sra Zafiro", personality=NPC_PERSONALITY_DICT['hostil'], tupla_rect=((162, 110, 44, 49)), shooter_num=10),
-     NPC(sprite_sheet_mel, sra_zafiro_portrait, "Mel", personality=NPC_PERSONALITY_DICT['accesible'], tupla_rect=((272, 112, 47, 48)), shooter_num=20)
+     NPC(sprite_sheet_mel, sra_zafiro_portrait, "Mel", personality=NPC_PERSONALITY_DICT['accesible'], tupla_rect=((272, 112, 47, 48)), shooter_num=20),
+     NPC(sprite_sheet_john, sra_zafiro_portrait, "john", personality=NPC_PERSONALITY_DICT['accesible'], tupla_rect=((272, 112, 47, 48)), shooter_num=0),
+     NPC(sprite_sheet_mariana, sra_zafiro_portrait, "mariana", personality=NPC_PERSONALITY_DICT['moderado'], tupla_rect=((272, 112, 47, 48)), shooter_num=0),
+     NPC(sprite_sheet_nerea, sra_zafiro_portrait, "nerea", personality=NPC_PERSONALITY_DICT['accesible'], tupla_rect=((272, 112, 47, 48)), shooter_num=0),
+     NPC(sprite_sheet_marcelo, sra_zafiro_portrait, "marcelo", personality=NPC_PERSONALITY_DICT['accesible'], tupla_rect=((272, 112, 47, 48)), shooter_num=0),
+     NPC(sprite_sheet_nico, sra_zafiro_portrait, "nico", personality=NPC_PERSONALITY_DICT['accesible'], tupla_rect=((272, 112, 47, 48)), shooter_num=0),
+     NPC(sprite_sheet_rothwailer, sra_zafiro_portrait, "Sra Rothwailer", personality=NPC_PERSONALITY_DICT['hostil'], tupla_rect=((272, 112, 47, 48)), shooter_num=0),
+     NPC(sprite_sheet_florencia1, sra_zafiro_portrait, "florencia1", personality=NPC_PERSONALITY_DICT['accesible'], tupla_rect=((272, 112, 47, 48)), shooter_num=0),
+     NPC(sprite_sheet_florencia2, sra_zafiro_portrait, "florencia2", personality=NPC_PERSONALITY_DICT['moderado'], tupla_rect=((272, 112, 47, 48)), shooter_num=0),
+     NPC(sprite_sheet_florencia3, sra_zafiro_portrait, "florencia3", personality=NPC_PERSONALITY_DICT['hostil'], tupla_rect=((272, 112, 47, 48)), shooter_num=0),
+     NPC(sprite_sheet_daniel, sra_zafiro_portrait, "daniel", personality=NPC_PERSONALITY_DICT['hostil'], tupla_rect=((272, 112, 47, 48)), shooter_num=0),
+     NPC(sprite_sheet_chuck, sra_zafiro_portrait, "chuck", personality=NPC_PERSONALITY_DICT['accesible'], tupla_rect=((272, 112, 47, 48)), shooter_num=0),
+     NPC(sprite_sheet_jennifer, sra_zafiro_portrait, "jennifer", personality=NPC_PERSONALITY_DICT['accesible'], tupla_rect=((272, 112, 47, 48)), shooter_num=0),
+     NPC(sprite_sheet_emilio, sra_zafiro_portrait, "emilio", personality=NPC_PERSONALITY_DICT['accesible'], tupla_rect=((272, 112, 47, 48)), shooter_num=0),
+     NPC(sprite_sheet_camorre, sra_zafiro_portrait, "camorre", personality=NPC_PERSONALITY_DICT['moderado'], tupla_rect=((272, 112, 47, 48)), shooter_num=0)
      
 ]
 
@@ -159,6 +173,62 @@ frame_zafiro = npc1_zafiro.get_image(0, 32, 32) # recorta el frame que se necesi
 # Instancia Mel
 npc2_mel = NPC_LISTAO[1]
 frame_mel = npc2_mel.get_image(0, 32, 32) # recorta el frame que se necesita
+
+# Instancia john
+npc3_john = NPC_LISTAO[2]
+frame_john = npc3_john.get_image(0, 32, 32) # recorta el frame que se necesita
+
+# Instancia de mariana
+npc4_mariana = NPC_LISTAO[3]
+frame_mariana = npc4_mariana.get_image(0, 32, 32) # recorta el frame que se necesita
+
+# Instancia de nerea
+npc5_nerea = NPC_LISTAO[4]
+frame_nerea = npc5_nerea.get_image(0, 32, 32) # recorta el frame que se necesita
+
+# Instancia de marcelo
+npc6_marcelo = NPC_LISTAO[5]
+frame_marcelo = npc6_marcelo.get_image(0, 32, 32) # recorta el frame que se necesita
+
+# Instancia de nico
+npc7_nico = NPC_LISTAO[6]
+frame_nico = npc7_nico.get_image(0, 32, 32) # recorta el frame que se necesita
+
+# Instancia de rothwailer
+npc8_rothwailer = NPC_LISTAO[7]
+frame_rothwailer = npc8_rothwailer.get_image(0, 32, 32) # recorta el frame que se necesita
+
+# Instancia de florencia1
+npc9_florencia1 = NPC_LISTAO[8]
+frame_florencia1 = npc9_florencia1.get_image(0, 32, 32) # recorta el frame que se necesita
+
+# Instancia de florencia2
+npc10_florencia2 = NPC_LISTAO[9]
+frame_florencia2 = npc10_florencia2.get_image(0, 32, 32) # recorta el frame que se necesita
+
+# Instancia de florencia3
+npc11_florencia3 = NPC_LISTAO[10]
+frame_florencia3 = npc11_florencia3.get_image(0, 32, 32) # recorta el frame que se necesita
+
+# Instancia de daniel
+npc12_daniel = NPC_LISTAO[11]
+frame_daniel = npc12_daniel.get_image(0, 32, 32) # recorta el frame que se necesita
+
+# Instancia de chuck
+npc13_chuck = NPC_LISTAO[12]
+frame_chuck = npc13_chuck.get_image(0, 32, 32) # recorta el frame que se necesita
+
+# Instancia de jennifer
+npc14_jennifer = NPC_LISTAO[13]
+frame_jennifer = npc14_jennifer.get_image(0, 32, 32) # recorta el frame que se necesita
+
+# Instancia de emilio
+npc15_emilio = NPC_LISTAO[14]
+frame_emilio = npc15_emilio.get_image(0, 32, 32) # recorta el frame que se necesita
+
+# Instancia de camorre
+npc16_camorre = NPC_LISTAO[15]
+frame_camorre = npc16_camorre.get_image(0, 32, 32) # recorta el frame que se necesita
 
 # INSTANCIA DE Cocinero -----------------------------------------------------------------------------------------------------------------------
 cocinero = Cocinero(sprite_sheet_cocinero, "src/assets/portraits/cocinero.png")
@@ -350,6 +420,23 @@ while running:
         # EN ESTA PARTE SE COLOCAN LOS NPC EN EL SCREEN -------------------------------------------------------------------------------------- 
         screen.blit(frame_zafiro, (175,90)) # pone el frame de zafiro en la ventana
         screen.blit(frame_mel, (280,90)) # pone el frame de mel en la ventana
+        screen.blit(frame_john, (475,90)) # pone el frame de john en la ventana
+        screen.blit(frame_mariana, (605,90)) # pone el frame de mariana en la ventana
+        
+        screen.blit(frame_nerea, (175,205)) # pone el frame de nerea en la ventana
+        screen.blit(frame_marcelo, (285,205)) # pone el frame de marcelo en la ventana
+        screen.blit(frame_nico, (465,205)) # pone el frame de nico en la ventana
+        screen.blit(frame_rothwailer, (595,205)) # pone el frame de rothwailer en la ventana
+
+        screen.blit(frame_florencia1, (175,315)) # pone el frame de florencia1 en la ventana
+        screen.blit(frame_florencia2, (285,315)) # pone el frame de florencia2 en la ventana
+        screen.blit(frame_florencia3, (465,315)) # pone el frame de florencia3 en la ventana
+        screen.blit(frame_daniel, (595,315)) # pone el frame de daniel en la ventana
+
+        screen.blit(frame_chuck, (175,425)) # pone el frame de chuck en la ventana
+        screen.blit(frame_jennifer, (285,425)) # pone el frame de jennifer en la ventana
+        screen.blit(frame_emilio, (465,425)) # pone el frame de emilio en la ventana
+        screen.blit(frame_camorre, (595,425)) # pone el frame de emilio en la ventana
         
         # SI EL SHOOTER DEVUELVE TRUE SE DISPARA LA COLA DE EVENTO PERSONALIZADO ACTIVANDO EL NPC_DETECTOR -----------------------------------
         if npc_detector.shooter():
