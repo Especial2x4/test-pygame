@@ -418,19 +418,19 @@ while running:
         npc_detector.set_npc_new_random(random_flag) # Se setea el nuevo número random flag en el NPC_Detector
         
         # EN ESTA PARTE SE COLOCAN LOS NPC EN EL SCREEN -------------------------------------------------------------------------------------- 
-        screen.blit(frame_zafiro, (175,90)) # pone el frame de zafiro en la ventana
-        screen.blit(frame_mel, (280,90)) # pone el frame de mel en la ventana
+        screen.blit(frame_zafiro, (175,90)) # pone el frame de zafiro en la ventana //
+        screen.blit(frame_mel, (280,90)) # pone el frame de mel en la ventana //
         screen.blit(frame_john, (475,90)) # pone el frame de john en la ventana
-        screen.blit(frame_mariana, (605,90)) # pone el frame de mariana en la ventana
+        screen.blit(frame_mariana, (605,90)) # pone el frame de mariana en la ventana // 
         
         screen.blit(frame_nerea, (175,205)) # pone el frame de nerea en la ventana
         screen.blit(frame_marcelo, (285,205)) # pone el frame de marcelo en la ventana
         screen.blit(frame_nico, (465,205)) # pone el frame de nico en la ventana
         screen.blit(frame_rothwailer, (595,205)) # pone el frame de rothwailer en la ventana
 
-        screen.blit(frame_florencia1, (175,315)) # pone el frame de florencia1 en la ventana
-        screen.blit(frame_florencia2, (285,315)) # pone el frame de florencia2 en la ventana
-        screen.blit(frame_florencia3, (465,315)) # pone el frame de florencia3 en la ventana
+        screen.blit(frame_florencia1, (175,315)) # pone el frame de florencia1 en la ventana //
+        screen.blit(frame_florencia2, (285,315)) # pone el frame de florencia2 en la ventana //
+        screen.blit(frame_florencia3, (465,315)) # pone el frame de florencia3 en la ventana //
         screen.blit(frame_daniel, (595,315)) # pone el frame de daniel en la ventana
 
         screen.blit(frame_chuck, (175,425)) # pone el frame de chuck en la ventana
