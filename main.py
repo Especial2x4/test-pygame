@@ -127,7 +127,7 @@ sprite_sheet_jennifer = "src/assets/jennifer.png" # Hoja de sprite que correspon
 sprite_sheet_emilio = "src/assets/emilio.png" # Hoja de sprite que corresponde a emilio
 sprite_sheet_camorre = "src/assets/camorre.png" # Hoja de sprite que corresponde a camorre
 # Cocinero
-sprite_sheet_cocinero = "src/assets/cocinero.png" # Hoja de sprite que corresponde a camorre
+sprite_sheet_cocinero = "src/assets/cocinero.png" # Hoja de sprite que corresponde a cocinero
 # Ruta del alert box
 sprite_sheet_wait = "src/assets/wait-box.png"
 wait_box = pygame.image.load(sprite_sheet_wait).convert_alpha()
