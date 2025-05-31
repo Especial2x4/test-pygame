@@ -109,25 +109,25 @@ collision_objects = get_collision_objects(tmx_data)
 
 sprite_sheet_path = 'assets/sprite_sheet.png'
 # Ventas
-sprite_sheet_zafiro = "src/assets/zafiro.png" # Hoja de sprite que corresponde a la sra zafiro
-sprite_sheet_mel = "src/assets/mel.png" # Hoja de sprite que corresponde a mel
-sprite_sheet_john = "src/assets/john.png" # Hoja de sprite que corresponde a john
-sprite_sheet_mariana = "src/assets/mariana.png" # Hoja de sprite que corresponde a mariana
-sprite_sheet_nerea = "src/assets/nerea.png" # Hoja de sprite que corresponde a nerea
-sprite_sheet_marcelo = "src/assets/marcelo.png" # Hoja de sprite que corresponde a marcelo
-sprite_sheet_nico = "src/assets/nico.png" # Hoja de sprite que corresponde a nico
-sprite_sheet_rothwailer = "src/assets/rothwailer.png" # Hoja de sprite que corresponde a sra rothwailer
+sprite_sheet_zafiro = "src/assets/zafiro.png" # Hoja de sprite que corresponde a la sra zafiro x
+sprite_sheet_mel = "src/assets/mel.png" # Hoja de sprite que corresponde a mel x
+sprite_sheet_john = "src/assets/john.png" # Hoja de sprite que corresponde a john x
+sprite_sheet_mariana = "src/assets/mariana.png" # Hoja de sprite que corresponde a mariana x
+sprite_sheet_nerea = "src/assets/nerea.png" # Hoja de sprite que corresponde a nerea x
+sprite_sheet_marcelo = "src/assets/marcelo.png" # Hoja de sprite que corresponde a marcelo x
+sprite_sheet_nico = "src/assets/nico.png" # Hoja de sprite que corresponde a nico x
+sprite_sheet_rothwailer = "src/assets/rothwailer.png" # Hoja de sprite que corresponde a sra rothwailer x
 # Producto ExtraTerrestre
-sprite_sheet_florencia1 = "src/assets/florencia1.png" # Hoja de sprite que corresponde a florencia uno
-sprite_sheet_florencia2 = "src/assets/florencia2.png" # Hoja de sprite que corresponde a florencia dos
-sprite_sheet_florencia3 = "src/assets/florencia3.png" # Hoja de sprite que corresponde a florencia tres
-sprite_sheet_daniel = "src/assets/daniel.png" # Hoja de sprite que corresponde a daniel
-sprite_sheet_chuck = "src/assets/chuck.png" # Hoja de sprite que corresponde a chuck
-sprite_sheet_jennifer = "src/assets/jennifer.png" # Hoja de sprite que corresponde a jennifer
+sprite_sheet_florencia1 = "src/assets/florencia1.png" # Hoja de sprite que corresponde a florencia uno x
+sprite_sheet_florencia2 = "src/assets/florencia2.png" # Hoja de sprite que corresponde a florencia dos x
+sprite_sheet_florencia3 = "src/assets/florencia3.png" # Hoja de sprite que corresponde a florencia tres x
+sprite_sheet_daniel = "src/assets/daniel.png" # Hoja de sprite que corresponde a daniel x
+sprite_sheet_chuck = "src/assets/chuck.png" # Hoja de sprite que corresponde a chuck x
+sprite_sheet_jennifer = "src/assets/jennifer.png" # Hoja de sprite que corresponde a jennifer x 
 sprite_sheet_emilio = "src/assets/emilio.png" # Hoja de sprite que corresponde a emilio
 sprite_sheet_camorre = "src/assets/camorre.png" # Hoja de sprite que corresponde a camorre
 # Cocinero
-sprite_sheet_cocinero = "src/assets/cocinero.png" # Hoja de sprite que corresponde a cocinero
+sprite_sheet_cocinero = "src/assets/cocinero.png" # Hoja de sprite que corresponde a cocinero x
 # Ruta del alert box
 sprite_sheet_wait = "src/assets/wait-box.png"
 wait_box = pygame.image.load(sprite_sheet_wait).convert_alpha()
