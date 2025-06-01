@@ -14,7 +14,7 @@ class Combate():
         self.battle_log = []
         self.menu_options = ["Resolver", "Escapar"]
         self.selected_option = 0  # Índice de la opción seleccionada
-        self.sra_zafiro_text = "Dale que me anda para la M1#rd4 la computadora!"  # Texto inicial de Sra Zafiro    
+        self.sra_zafiro_text = "Dale que me anda para la Mi3rda la computadora!"  # Texto inicial de Sra Zafiro    
         self.menu_state = "main_menu"  # Estados posibles: "main_menu", "resolver_menu", "reward_screen"
             
 
@@ -147,7 +147,7 @@ class Combate():
 
         self.menu_state = "main_menu"
         self.battle_log = []
-        self.sra_zafiro_text = "Dale que me anda para la M1#rd4 la computadora!"
+        self.sra_zafiro_text = "Dale que me anda para la Mi3rda la computadora!"
         self.menu_options = ["Resolver", "Escapar"]
         
 
