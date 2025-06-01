@@ -134,6 +134,7 @@ wait_box = pygame.image.load(sprite_sheet_wait).convert_alpha()
 
 # RUTAS DE PORTRAITS -----------------------------------------------------------------------------------------------------------------------
 sra_zafiro_portrait = "src/assets/portraits/sra-zafiro-d.png"
+mel_portrait = "src/assets/portraits/mel-d.png"
 
 
 # INSTANCIA DE PLAYER -----------------------------------------------------------------------------------------------------------------------
@@ -146,7 +147,7 @@ pc = PC()
 NPC_LISTAO = [
      
      NPC(sprite_sheet_zafiro, sra_zafiro_portrait, "Sra Zafiro", personality=NPC_PERSONALITY_DICT['hostil'], tupla_rect=((162, 110, 44, 49)), shooter_num=10),
-     NPC(sprite_sheet_mel, sra_zafiro_portrait, "Mel", personality=NPC_PERSONALITY_DICT['accesible'], tupla_rect=((272, 112, 47, 48)), shooter_num=20),
+     NPC(sprite_sheet_mel, mel_portrait, "Mel", personality=NPC_PERSONALITY_DICT['accesible'], tupla_rect=((272, 112, 47, 48)), shooter_num=20),
      NPC(sprite_sheet_john, sra_zafiro_portrait, "john", personality=NPC_PERSONALITY_DICT['accesible'], tupla_rect=((272, 112, 47, 48)), shooter_num=0),
      NPC(sprite_sheet_mariana, sra_zafiro_portrait, "mariana", personality=NPC_PERSONALITY_DICT['moderado'], tupla_rect=((272, 112, 47, 48)), shooter_num=0),
      NPC(sprite_sheet_nerea, sra_zafiro_portrait, "nerea", personality=NPC_PERSONALITY_DICT['accesible'], tupla_rect=((272, 112, 47, 48)), shooter_num=0),
