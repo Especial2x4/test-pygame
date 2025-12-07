@@ -459,14 +459,16 @@ while running:
 
 
 
-    # Dibujar la compuerta de la sala
+    # Dibujar la compuerta de la sala ( Solo para depuración )
     if pc.active == False: # Se dibuja la compuerta de la sala solo si no se ha ingresado a la pc
-        pygame.draw.rect(screen, (0,255,0), puerta_sala.rectangle)
+        #pygame.draw.rect(screen, (0,255,0), puerta_sala.rectangle)
+        pass
     
 
-    # Dibujar la compuerta del comedor
+    # Dibujar la compuerta del comedor ( Solo para depuración )
     if pc.active == False and tag_level != "sistemas": # Se dibuja la compuerta de la sala solo si no se ha ingresado a la pc
-        pygame.draw.rect(screen, (255,0,0), puerta_comedor.rectangle)
+        #pygame.draw.rect(screen, (255,0,0), puerta_comedor.rectangle)
+        pass
     
 
     # BLOQUE NECESARIO PARA INGRESAR AL MENÚ DEL COMEDOR --------------------------------------------------------------------------------------
@@ -475,9 +477,10 @@ while running:
         barra_comedor.draw(screen, cocinero)
 
 
-    # Dibujar la barra del comedor
+    # Dibujar la barra del comedor ( Solo para depuración )
     if barra_comedor.active == False and tag_level == "comedor": # Se dibuja la barra del comedor
-        pygame.draw.rect(screen, (0,0,255), barra_comedor.rectangle)
+        #pygame.draw.rect(screen, (0,0,255), barra_comedor.rectangle)
+        pass
         
     # ---------------------------------------------------------------------------------------------------------------------------------------------
 
