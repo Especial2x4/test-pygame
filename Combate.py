@@ -10,6 +10,9 @@ class Combate():
         
         self.screen = screen
         self.font = pygame.font.Font(None, 32)
+
+        # CAMBIAR AQUÍ LA FUENTE:
+        self.font = pygame.font.Font("src/assets/font/Minecraftia-Regular.ttf", 24)
         
         self.battle_log = []
         self.menu_options = ["Resolver", "Escapar"]

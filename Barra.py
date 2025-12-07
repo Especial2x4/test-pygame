@@ -4,7 +4,7 @@ import pygame
 class Barra:
     def __init__(self, screen, pos_x, pos_y):
         super().__init__()
-        self.font = pygame.font.Font(None, 36)
+        self.font = pygame.font.Font("src/assets/font/Minecraftia-Regular.ttf", 24)
         self.active = False
         self.rectangle = pygame.Rect(pos_x, pos_y, 142, 18)
         self.screen = screen #El screen acá puede estár sobrando
