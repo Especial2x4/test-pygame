@@ -124,7 +124,7 @@ class Barra:
             #text = self.font.render("Press Enter to exit", True, (255, 255, 255))
             #screen.blit(text, (50, 100))
             screen.blit(cocinero.portrait, (50, 50))  # Posición del retrato en la pantalla
-            self.draw_text(screen, "Hola que vas a comprar?", 430, 90, (0,0,0))
+            self.draw_text(screen, "Hola que vas a comprar?", 430, 90, (255,0,0))
             self.draw_text(screen, self.log_testo, 430, 160, (0,0,0))
             self.draw_menu(screen, self.dict_menu, self.selected_option, 60, 460, (0,0,0), (255,255,255), (0,0,255))  # Dibuja el menú con opciones
 

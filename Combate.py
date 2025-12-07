@@ -108,6 +108,7 @@ class Combate():
     
     # Función para dibujar texto
     def draw_text(self, text, x, y, color=(0, 0, 0)):
+        """Param1=Texto, Param2=pos_x, Para3=pos_y, Param4=color"""
         text_surface = self.font.render(text, True, color)
         self.screen.blit(text_surface, (x, y))
 
@@ -175,7 +176,7 @@ class Combate():
             if self.menu_state == "main_menu":
                 self.screen.blit(npc.portrait, (50, 50))  # Posición del retrato en la pantalla
                 self.draw_text(f"{npc.name} - HP: {npc.current_hp}/{npc.max_hp}", 50, 10)
-                self.draw_text(f"{npc.name} dice: ", 430, 50)
+                self.draw_text(f"{npc.name} dice: ", 430, 50, color=(255,0,0))
                 self.draw_wrapped_text(self.sra_zafiro_text, 430, 90, width - 440)
                 self.draw_text("Elegir una opción :", 60, 420)
                 #draw_text("1> Resolver  2> Escapar", 60, 360)
@@ -184,7 +185,7 @@ class Combate():
                 self.menu_options = ["Reiniciar la PC"]
                 self.screen.blit(npc.portrait, (50, 50))  # Posición del retrato en la pantalla
                 self.draw_text(f"{npc.name} - HP: {npc.current_hp}/{npc.max_hp}", 50, 10)
-                self.draw_text(f"{npc.name} dice: ", 430, 50)
+                self.draw_text(f"{npc.name} dice: ", 430, 50, color=(255,0,0))
                 self.draw_wrapped_text(self.sra_zafiro_text, 430, 90, width - 440)  # Asegurarse de que el texto se actualice aquí también.
                 self.draw_text("Elegir una opción :", 60, 420)
                 #draw_text("1> Reiniciar la PC", 60, 360)
